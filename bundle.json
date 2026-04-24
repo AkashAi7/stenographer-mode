@@ -1,0 +1,29 @@
+{
+  "name": "stenographer-mode-bundle",
+  "version": "1.0.0",
+  "productId": "stenographer-mode",
+  "userId": "stenographer_mode",
+  "entrypoints": {
+    "vscodePrompt": "bundles/vscode/stenographer.prompt.md",
+    "vscodePromptLegacy": "bundles/vscode/stenographer-mode.prompt.md",
+    "copilotSkill": ".github/skills/stenographer/SKILL.md",
+    "cavemanBaseline": ".github/skills/caveman/SKILL.md",
+    "demo": "demo/index.html",
+    "benchmark": "benchmarks/latest.json"
+  },
+  "install": {
+    "windows": "install/install.ps1",
+    "uninstall": "install/uninstall.ps1",
+    "export": "install/export-pack.ps1"
+  },
+  "packs": {
+    "claude": "packs/claude/system.txt",
+    "cursor": "packs/cursor/rules.txt",
+    "chatgpt": "packs/chatgpt/custom-instructions.txt"
+  },
+  "artifacts": {
+    "brandMark": "demo/brand-mark.svg",
+    "browserBenchmark": "demo/benchmark-data.js",
+    "generator": "scripts/generate-benchmarks.mjs"
+  }
+}

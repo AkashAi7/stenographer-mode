@@ -1,0 +1,12 @@
+{
+  "name": "stenographer-mode",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "benchmark": "node ./scripts/generate-benchmarks.mjs"
+  },
+  "dependencies": {
+    "gpt-tokenizer": "^3.4.0"
+  }
+}

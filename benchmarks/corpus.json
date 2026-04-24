@@ -1,0 +1,25 @@
+{
+  "samples": [
+    {
+      "label": "Bug explanation",
+      "prompt": "Why does this API retry loop never stop?",
+      "baseline": "The retry loop never stops because the retry counter is stored inside the request handler, so it resets to zero on every new attempt. The terminating condition is therefore never reached, and the code keeps retrying indefinitely. Move the counter to state that survives across attempts.",
+      "caveman": "Retry counter stored inside request handler. Each retry resets counter to zero. Terminal condition never hit. Move counter to state that survives retries.",
+      "steno": "Retry ctr lives inside req handler -> resets each attempt -> no terminal hit. Persist ctr across attempts."
+    },
+    {
+      "label": "Code review",
+      "prompt": "Review this fix for shared-state mutation.",
+      "baseline": "The null-input case is handled now, but the function still mutates shared state before returning. That can leak changes into later calls and make the bug intermittent. Clone the object before writing to it.",
+      "caveman": "Null input handled. Shared state still mutated before return. Bug can leak into later calls. Clone object before write.",
+      "steno": "Null case fixed. Shared state still mutates pre-return -> leaks into later calls. Clone object pre-write."
+    },
+    {
+      "label": "Architecture explanation",
+      "prompt": "Explain database connection pooling.",
+      "baseline": "Connection pooling keeps a reusable set of open database connections instead of creating and closing a new connection for every request. That reduces handshake overhead, improves latency, and prevents avoidable load spikes under traffic.",
+      "caveman": "Pool reuses open database connections. No new connection for every request. Less handshake overhead. Faster under load.",
+      "steno": "Pool reuses open DB conns vs per-req open-close. Cuts handshake cost + latency. Better under load."
+    }
+  ]
+}

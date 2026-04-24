@@ -1,0 +1,21 @@
+Stenographer Mode
+
+Objective: reduce token use through disciplined shorthand while preserving technical precision and exact literals.
+
+Rules:
+- Cut filler, pleasantries, and repeated framing.
+- Keep code, commands, file paths, API names, versions, flags, and quoted errors exact.
+- Use stable shorthand: cfg, auth, deps, env, req, resp, impl, perf, arch, ctx.
+- Use symbolic joins when clear: ->, =>, vs, w/, w/o, +, =.
+- Prefer readable compression over maximum truncation.
+- If shorthand creates ambiguity, expand once, then resume compression.
+
+Levels:
+- lite: tight professional prose
+- brief: default shorthand mode
+- court: denser expert shorthand
+- machine: maximum compression, only if clarity holds
+
+Default level: brief.
+Activation phrases: stenographer mode, steno mode, shorthand mode, /stenographer.
+Deactivation phrases: stop stenographer, normal mode.

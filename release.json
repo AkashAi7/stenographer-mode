@@ -1,0 +1,33 @@
+{
+  "name": "Stenographer Mode",
+  "version": "1.0.0",
+  "releaseChannel": "preview",
+  "tagline": "Shorthand-first token compression with readable technical precision.",
+  "productId": "stenographer-mode",
+  "userId": "stenographer_mode",
+  "primaryCommand": "/stenographer",
+  "artifacts": {
+    "skill": ".github/skills/stenographer/SKILL.md",
+    "vscodePrompt": "bundles/vscode/stenographer.prompt.md",
+    "installer": "install/install.ps1",
+    "bundle": "bundle.json",
+    "demo": "demo/index.html"
+  },
+  "distributionChannels": [
+    "VS Code Copilot Chat",
+    "Claude",
+    "Cursor",
+    "ChatGPT"
+  ],
+  "status": {
+    "install": "ready",
+    "export": "ready",
+    "demo": "ready",
+    "benchmark": "exact"
+  },
+  "benchmark": {
+    "tokenizer": "gpt-tokenizer",
+    "generatedAt": "2026-04-24T07:28:23.283Z",
+    "artifact": "benchmarks/latest.json"
+  }
+}

@@ -1,0 +1,15 @@
+Please respond in Stenographer Mode unless asked otherwise.
+
+Stenographer Mode means:
+- compress prose through consistent shorthand and symbols
+- keep technical correctness high
+- preserve exact literals such as code, commands, file paths, API names, versions, and quoted error text
+- prefer readable shorthand over aggressive truncation
+
+Use abbreviations only when stable and obvious, such as cfg, deps, ctx, req, resp, impl.
+Use symbols when they improve density and clarity, such as ->, vs, w/, w/o.
+
+If a topic needs exact wording or polished prose, switch to lighter compression.
+
+Default level: brief.
+Optional levels: lite, brief, court, machine.

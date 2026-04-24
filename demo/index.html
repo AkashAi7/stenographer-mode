@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stenographer Mode Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="topbar">
+        <div class="brand-lockup">
+          <img src="./brand-mark.svg" alt="Stenographer Mode logo" class="brand-mark" />
+          <div>
+            <p class="eyebrow">Launch Preview</p>
+            <p class="brand-name">Stenographer Mode</p>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="cta primary" data-copy="& '.\\install\\install.ps1'">Copy Install Command</button>
+          <button class="cta secondary" data-copy="& '.\\install\\export-pack.ps1'">Copy Export Command</button>
+        </div>
+      </section>
+
+      <section class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Token Compression Study</p>
+          <h1>Stenographer mode compresses by shorthand discipline, not by blunt simplification.</h1>
+          <p class="hero-text">
+            Demo compares baseline prose, caveman mode, and the new stenographer mode across the same prompts.
+            Token counts are generated from an exact benchmark artifact using <code>gpt-tokenizer</code>.
+          </p>
+          <div class="hero-badges">
+            <span>Exact literals preserved</span>
+            <span>Stable abbreviations</span>
+            <span>Symbol-first causal chains</span>
+          </div>
+          <p class="status-line" id="copy-status">Primary command: <code>/stenographer</code></p>
+        </div>
+        <div class="hero-graphic">
+          <svg viewBox="0 0 480 320" aria-label="Compression flow diagram">
+            <defs>
+              <linearGradient id="signal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ff8a5b" />
+                <stop offset="100%" stop-color="#f2c14e" />
+              </linearGradient>
+            </defs>
+            <rect x="24" y="36" width="132" height="88" rx="18" class="svg-box base" />
+            <rect x="174" y="36" width="132" height="88" rx="18" class="svg-box caveman" />
+            <rect x="324" y="36" width="132" height="88" rx="18" class="svg-box steno" />
+            <text x="90" y="74" text-anchor="middle">Baseline</text>
+            <text x="90" y="96" text-anchor="middle">full prose</text>
+            <text x="240" y="74" text-anchor="middle">Caveman</text>
+            <text x="240" y="96" text-anchor="middle">semantic cut</text>
+            <text x="390" y="74" text-anchor="middle">Steno</text>
+            <text x="390" y="96" text-anchor="middle">shorthand map</text>
+            <path d="M156 80 H174" class="svg-line" />
+            <path d="M306 80 H324" class="svg-line" />
+            <circle cx="165" cy="80" r="4" fill="url(#signal)" />
+            <circle cx="315" cy="80" r="4" fill="url(#signal)" />
+            <rect x="40" y="176" width="400" height="88" rx="24" class="svg-band" />
+            <text x="240" y="210" text-anchor="middle">Compression strategy</text>
+            <text x="240" y="236" text-anchor="middle">drop filler -> standardize shorthand -> preserve exact literals</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="metrics-grid">
+        <article class="panel metric-card">
+          <p class="metric-label">Average exact tokens</p>
+          <p class="metric-value" id="avg-baseline">0</p>
+          <p class="metric-note">Baseline reference</p>
+        </article>
+        <article class="panel metric-card accent-caveman">
+          <p class="metric-label">Caveman reduction</p>
+          <p class="metric-value" id="caveman-reduction">0%</p>
+          <p class="metric-note">vs baseline</p>
+        </article>
+        <article class="panel metric-card accent-steno">
+          <p class="metric-label">Steno reduction</p>
+          <p class="metric-value" id="steno-reduction">0%</p>
+          <p class="metric-note">vs baseline</p>
+        </article>
+      </section>
+
+      <section class="panel product-strip">
+        <div>
+          <p class="eyebrow">Product Identity</p>
+          <h2>Ship it as a mode product, not just a prompt trick.</h2>
+        </div>
+        <div class="identity-grid">
+          <article>
+            <p class="metric-label">Product ID</p>
+            <p class="identity-value">stenographer-mode</p>
+          </article>
+          <article>
+            <p class="metric-label">User ID</p>
+            <p class="identity-value">@stenographer_mode</p>
+          </article>
+          <article>
+            <p class="metric-label">Primary command</p>
+            <p class="identity-value">/stenographer</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel launch-grid">
+        <article>
+          <p class="metric-label">Release Channel</p>
+          <p class="identity-value">preview</p>
+          <p class="metric-note">Productized bundle with install and export flow.</p>
+        </article>
+        <article>
+          <p class="metric-label">Platforms</p>
+          <p class="identity-value" id="platform-count">0</p>
+          <p class="metric-note">Current starter-pack coverage.</p>
+        </article>
+        <article>
+          <p class="metric-label">Bundle Status</p>
+          <p class="identity-value">ready</p>
+          <p class="metric-note">Installer, prompt, skill, demo, packs.</p>
+        </article>
+      </section>
+
+      <section class="panel install-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Install Surface</p>
+            <h2>End-to-end product flow: bundle, install, activate, export.</h2>
+          </div>
+        </div>
+        <div class="distribution-grid">
+          <article>
+            <h3>1. Install</h3>
+            <p>Run <code>install/install.ps1</code> to copy the VS Code prompt into the roaming profile.</p>
+          </article>
+          <article>
+            <h3>2. Activate</h3>
+            <p>Use <code>/stenographer</code> in prompt picker or trigger it with “stenographer mode” phrasing. Legacy alias: <code>/stenographer-mode</code>.</p>
+          </article>
+          <article>
+            <h3>3. Export</h3>
+            <p>Run <code>install/export-pack.ps1</code> to generate a shareable distribution bundle.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel explainer">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2>Steno mode uses controlled shorthand, not raw truncation.</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>1</span>
+            <h3>Trim</h3>
+            <p>Remove filler, social framing, and repeated setup.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Map</h3>
+            <p>Swap repeated concepts to stable abbreviations like <code>cfg</code>, <code>deps</code>, and <code>ctx</code>.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Link</h3>
+            <p>Use symbols like <code>-&gt;</code>, <code>w/</code>, and <code>vs</code> to compress relations.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Protect</h3>
+            <p>Leave commands, code, paths, exact errors, versions, and identifiers untouched.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel comparison-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Mode Comparison</p>
+            <h2>Baseline vs caveman vs stenographer</h2>
+          </div>
+          <label class="prompt-picker">
+            <span>Prompt</span>
+            <select id="prompt-select"></select>
+          </label>
+        </div>
+
+        <div class="comparison-grid" id="comparison-grid"></div>
+      </section>
+
+      <section class="panel infographic-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Infographic</p>
+            <h2>Exact token profile</h2>
+          </div>
+        </div>
+        <div class="bars" id="bars"></div>
+        <p class="footnote">
+          Exact benchmark via <code>gpt-tokenizer</code>. Artifact: <code>benchmarks/latest.json</code>.
+        </p>
+      </section>
+
+      <section class="panel distribution-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Distribution</p>
+            <h2>Caveman-style reach needs platform packs, not one universal file.</h2>
+          </div>
+        </div>
+        <div class="distribution-grid">
+          <article>
+            <h3>Ready now</h3>
+            <p>VS Code skill, VS Code user prompt, local caveman comparator, installer scripts, static demo, product manifest, Claude pack, Cursor pack, ChatGPT pack.</p>
+          </article>
+          <article>
+            <h3>How caveman scales</h3>
+            <p>Same concept, multiple platform-native wrappers. Each platform gets its own instruction surface and trigger syntax.</p>
+          </article>
+          <article>
+            <h3>Next product step</h3>
+            <p>Create platform packs for Claude, Cursor, ChatGPT, and web docs so activation feels native everywhere.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel release-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Release Kit</p>
+            <h2>Core artifacts for shipping, installing, and sharing.</h2>
+          </div>
+        </div>
+        <div class="release-grid">
+          <article>
+            <h3>Install</h3>
+            <p><code>install/install.ps1</code></p>
+          </article>
+          <article>
+            <h3>Bundle</h3>
+            <p><code>bundle.json</code></p>
+          </article>
+          <article>
+            <h3>Release</h3>
+            <p><code>release.json</code></p>
+          </article>
+          <article>
+            <h3>Prompt</h3>
+            <p><code>bundles/vscode/stenographer.prompt.md</code></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="./benchmark-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

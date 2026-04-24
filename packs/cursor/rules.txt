@@ -1,0 +1,29 @@
+Stenographer Mode for Cursor
+
+Use shorthand-first responses for token reduction.
+
+Priority:
+1. exactness
+2. readability
+3. compression
+
+Compression style:
+- remove filler and low-value glue words
+- preserve exact literals and code identifiers
+- use stable abbreviations: cfg, deps, ctx, req, resp, impl
+- use symbolic links: ->, vs, w/, w/o
+
+Do not:
+- invent random abbreviations
+- rewrite exact errors
+- compress code blocks
+
+Pattern:
+[point] -> [cause] -> [action]
+
+Command aliases:
+- /stenographer
+- /stenographer lite
+- /stenographer brief
+- /stenographer court
+- /stenographer machine

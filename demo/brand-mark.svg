@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Stenographer Mode Brand Mark</title>
+  <desc id="desc">Layered shorthand strokes forming an S inside a rounded square.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f1b18"/>
+      <stop offset="100%" stop-color="#2a9d8f"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2c14e"/>
+      <stop offset="100%" stop-color="#ff8a5b"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="14" width="212" height="212" rx="44" fill="url(#bg)"/>
+  <path d="M66 70h92c18 0 30 10 30 24 0 16-12 24-30 24H92c-18 0-30 9-30 24 0 14 12 24 30 24h82" fill="none" stroke="#fff7ee" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 88h118M60 122h96M86 156h98" fill="none" stroke="url(#signal)" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+</svg>

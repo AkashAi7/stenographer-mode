@@ -1,0 +1,86 @@
+{
+  "id": "stenographer-mode",
+  "name": "Stenographer Mode",
+  "slug": "stenographer-mode",
+  "userId": "stenographer_mode",
+  "commands": [
+    "/stenographer",
+    "/stenographer lite",
+    "/stenographer brief",
+    "/stenographer court",
+    "/stenographer machine",
+    "/stenographer-mode"
+  ],
+  "tagline": "Shorthand-first token compression with readable technical precision.",
+  "positioning": {
+    "primary": "structured shorthand",
+    "contrast": "Caveman simplifies grammar; Stenographer compresses structure.",
+    "audience": [
+      "developers",
+      "prompt engineers",
+      "agent builders",
+      "power users"
+    ]
+  },
+  "distribution": {
+    "status": "productized",
+    "platforms": [
+      {
+        "name": "VS Code Copilot Chat",
+        "asset": ".github/skills/stenographer/SKILL.md",
+        "state": "ready"
+      },
+      {
+        "name": "Workspace-local Caveman Comparison",
+        "asset": ".github/skills/caveman/SKILL.md",
+        "state": "ready"
+      },
+      {
+        "name": "VS Code user prompt",
+        "asset": "bundles/vscode/stenographer.prompt.md",
+        "state": "ready"
+      },
+      {
+        "name": "Static product demo",
+        "asset": "demo/index.html",
+        "state": "ready"
+      },
+      {
+        "name": "Claude starter pack",
+        "asset": "packs/claude/system.txt",
+        "state": "ready"
+      },
+      {
+        "name": "Cursor starter pack",
+        "asset": "packs/cursor/rules.txt",
+        "state": "ready"
+      },
+      {
+        "name": "ChatGPT starter pack",
+        "asset": "packs/chatgpt/custom-instructions.txt",
+        "state": "ready"
+      },
+      {
+        "name": "Windows installer",
+        "asset": "install/install.ps1",
+        "state": "ready"
+      }
+    ]
+  },
+  "packaging": {
+    "bundle": "bundle.json",
+    "installer": "install/install.ps1",
+    "uninstaller": "install/uninstall.ps1",
+    "exporter": "install/export-pack.ps1",
+    "benchmark": "benchmarks/latest.json"
+  },
+  "aliases": {
+    "legacyPrompt": "bundles/vscode/stenographer-mode.prompt.md"
+  },
+  "principles": [
+    "Protect exact literals",
+    "Use stable shorthand",
+    "Prefer readable compression over raw truncation",
+    "Treat token savings as a usability feature"
+  ]
+}

@@ -15,6 +15,51 @@ Stenographer Mode is a prompt product for compact technical responses. It compre
 - Raw shortening can save tokens but damage scanability and precision.
 - Stenographer mode is built to keep causality, identifiers, commands, and code-adjacent clarity intact while staying compact.
 
+## Why Steno
+
+### The Problem
+
+AI responses are expensive. Every token costs money, time, and attention. Most technical answers are 30-50% filler: soft phrasing, redundant transitions, and verbose setup that adds reading time without adding value.
+
+### The Solution
+
+Stenographer mode applies **structured compression** — not random shortening, but deliberate shorthand with rules that keep technical content intact.
+
+| What steno preserves | Example |
+| --- | --- |
+| **Exact literals** | Commands, paths, error codes stay verbatim |
+| **Causal chains** | `A -> B -> C` notation shows flow at a glance |
+| **Code structure** | Identifiers, function names, config keys unchanged |
+| **Scan-friendly layout** | Bullets, arrows, sections enable fast navigation |
+
+### The Payoff
+
+| Benefit | Impact |
+| --- | --- |
+| **~40% token reduction** | Lower API costs, faster responses |
+| **Faster reading** | Scan in seconds instead of parsing paragraphs |
+| **Better retention** | Dense info sticks; filler fades |
+| **Technical accuracy** | No lossy compression on what matters |
+| **Consistent style** | Predictable abbreviations across responses |
+
+### Who Benefits Most
+
+- **Senior engineers** who scan faster than they read
+- **Code reviewers** who process many PRs per day
+- **On-call responders** who need answers now, not essays
+- **API-heavy workflows** where token costs add up
+- **Documentation writers** who value density over decoration
+
+### Real Numbers
+
+From the benchmark corpus (50+ samples, 7 categories):
+
+- **Baseline → Steno**: ~40% average token reduction
+- **Caveman → Steno**: 86% win rate on readability-adjusted comparisons
+- **Preserved precision**: 100% of code literals, paths, and error messages intact
+
+Steno is not about saving tokens at any cost. It is about saving the right tokens while keeping everything that matters.
+
 ## Honest Scope
 
 Stenographer mode is a specialized response style, not a universal improvement. It works well in some contexts and poorly in others.

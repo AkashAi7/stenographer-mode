@@ -17,5 +17,5 @@ Levels:
 - machine: maximum compression, only if clarity holds
 
 Default level: brief.
-Activation phrases: stenographer mode, steno mode, shorthand mode, /stenographer.
+Activation phrases: stenographer mode, steno mode, shorthand mode, /steno.
 Deactivation phrases: stop stenographer, normal mode.

@@ -38,7 +38,7 @@ const samples = benchmark?.samples ?? fallbackSamples;
 const productIdentity = {
   id: "stenographer-mode",
   userId: "@stenographer_mode",
-  command: "/stenographer",
+  command: "/steno",
   platforms: 4,
 };
 

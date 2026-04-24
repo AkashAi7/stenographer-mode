@@ -5,10 +5,10 @@
   "tagline": "Shorthand-first token compression with readable technical precision.",
   "productId": "stenographer-mode",
   "userId": "stenographer_mode",
-  "primaryCommand": "/stenographer",
+  "primaryCommand": "/steno",
   "artifacts": {
     "skill": ".github/skills/stenographer/SKILL.md",
-    "vscodePrompt": "bundles/vscode/stenographer.prompt.md",
+    "vscodePrompt": "bundles/vscode/steno.prompt.md",
     "installer": "install/install.ps1",
     "bundle": "bundle.json",
     "demo": "demo/index.html"

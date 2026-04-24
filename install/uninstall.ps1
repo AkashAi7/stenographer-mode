@@ -2,6 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 $userPrompts = Join-Path $env:APPDATA 'Code\User\prompts'
 $targets = @(
+  (Join-Path $userPrompts 'steno.prompt.md'),
   (Join-Path $userPrompts 'stenographer.prompt.md'),
   (Join-Path $userPrompts 'stenographer-mode.prompt.md')
 )

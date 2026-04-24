@@ -5,7 +5,7 @@ description: >
   Compresses responses through consistent abbreviations, symbolic links, and dropped filler while keeping
   technical precision and exact literals. Use when user says "stenographer mode", "steno mode",
   "shorthand mode", "compressed responses", "token reduction", "brief structured output",
-  or invokes /stenographer. Supports levels: lite, brief, court, machine.
+  or invokes /steno. Supports levels: lite, brief, court, machine.
 ---
 
 Respond like expert using disciplined shorthand. Dense, exact, readable. Do not imitate literal court-reporting notation.
@@ -14,7 +14,7 @@ Respond like expert using disciplined shorthand. Dense, exact, readable. Do not 
 
 ACTIVE EVERY RESPONSE after enabled. Stay active across turns. Off only: "stop stenographer" or "normal mode".
 
-Default: **brief**. Switch: `/stenographer lite|brief|court|machine`.
+Default: **brief**. Switch: `/steno lite|brief|court|machine`.
 
 ## Contract
 

@@ -22,8 +22,8 @@ Pattern:
 [point] -> [cause] -> [action]
 
 Command aliases:
-- /stenographer
-- /stenographer lite
-- /stenographer brief
-- /stenographer court
-- /stenographer machine
+- /steno
+- /steno lite
+- /steno brief
+- /steno court
+- /steno machine

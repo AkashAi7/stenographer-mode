@@ -4,11 +4,11 @@
   "slug": "stenographer-mode",
   "userId": "stenographer_mode",
   "commands": [
-    "/stenographer",
-    "/stenographer lite",
-    "/stenographer brief",
-    "/stenographer court",
-    "/stenographer machine",
+    "/steno",
+    "/steno lite",
+    "/steno brief",
+    "/steno court",
+    "/steno machine",
     "/stenographer-mode"
   ],
   "tagline": "Shorthand-first token compression with readable technical precision.",
@@ -37,7 +37,7 @@
       },
       {
         "name": "VS Code user prompt",
-        "asset": "bundles/vscode/stenographer.prompt.md",
+        "asset": "bundles/vscode/steno.prompt.md",
         "state": "ready"
       },
       {

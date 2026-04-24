@@ -245,6 +245,27 @@ h2 {
   background: linear-gradient(135deg, rgba(42, 157, 143, 0.18), rgba(255, 250, 243, 0.88));
 }
 
+.mascot-panel {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(42, 157, 143, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(242, 193, 78, 0.14), rgba(255, 250, 243, 0.88));
+}
+
+.mascot-image {
+  width: min(100%, 460px);
+  justify-self: end;
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow);
+}
+
 .explainer,
 .product-strip,
 .launch-grid,
@@ -404,6 +425,7 @@ h2 {
 @media (max-width: 960px) {
   .topbar,
   .hero,
+  .mascot-panel,
   .metrics-grid,
   .comparison-grid,
   .steps,
@@ -432,6 +454,7 @@ h2 {
   }
 
   .hero,
+  .mascot-panel,
   .explainer,
   .comparison-section,
   .infographic-panel,

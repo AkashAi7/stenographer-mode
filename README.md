@@ -1,32 +1,68 @@
 # Stenographer Mode
 
-Shorthand-first token compression with readable technical precision.
+![Stenographer Mode hero](./demo/readme-hero.svg)
 
-Stenographer Mode is a prompt and packaging product for compressed AI responses. It is positioned against caveman mode by keeping more structure and scanability while still reducing token usage.
+Shorthand-first token compression that stays readable, technical, and structurally precise.
 
-## What Is In This Repo
+Stenographer Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
 
-- VS Code Copilot skill: `.github/skills/stenographer/SKILL.md`
-- Caveman comparison skill: `.github/skills/caveman/SKILL.md`
-- VS Code user prompt bundle: `bundles/vscode/stenographer.prompt.md`
-- Static demo and landing page: `demo/`
-- Cross-platform starter packs: `packs/`
-- Installer and exporter: `install/`
-- Exact token benchmark pipeline: `benchmarks/` and `scripts/generate-benchmarks.mjs`
+![Steno mascot](./demo/steno-mascot.svg)
 
-## Product Identity
+## Why This Exists
 
-- Product ID: `stenographer-mode`
-- User ID: `stenographer_mode`
-- Primary command: `/stenographer`
-- Legacy alias: `/stenographer-mode`
+- Technical answers often waste tokens on filler, framing, and repeated setup.
+- Raw shortening can save tokens but damage scanability and precision.
+- Stenographer mode is built to keep causality, identifiers, commands, and code-adjacent clarity intact while staying compact.
 
-## Supported Surfaces
+## Quick Comparison
 
-- VS Code Copilot Chat
-- Claude
-- Cursor
-- ChatGPT
+Prompt: `Why does this API retry loop never stop?`
+
+| Mode | Example | Tokens | Read on it |
+| --- | --- | ---: | --- |
+| Baseline | `The retry loop never stops because the retry counter is stored inside the request handler, so it resets to zero on every new attempt. Move the counter to state that survives across attempts.` | 52 | Clear, but long |
+| Caveman | `Retry counter stored inside request handler. Each retry resets counter to zero. Terminal condition never hit. Move counter to state that survives retries.` | 27 | Fast, but rough |
+| Stenographer | `Retry ctr lives inside req handler -> resets each attempt -> no terminal hit. Persist ctr across attempts.` | 20 | Compact and still technical |
+
+Prompt: `Review this caching change.`
+
+| Mode | Example |
+| --- | --- |
+| Baseline | `This change improves cache hit rate, but it also introduces a stale data risk because invalidation only occurs on create and not on update or delete.` |
+| Caveman | `Cache hit rate better. Stale data risk. Invalidation only on create, not update/delete.` |
+| Stenographer | `Hit rate up, but cache invalidation only covers create -> stale reads on update/delete paths.` |
+
+Prompt: `Explain the architecture.`
+
+| Mode | Example |
+| --- | --- |
+| Baseline | `The worker receives jobs from the API, enriches them with configuration from Redis, writes results to PostgreSQL, and emits metrics through OpenTelemetry.` |
+| Caveman | `API sends jobs to worker. Worker reads Redis config, writes Postgres, emits telemetry.` |
+| Stenographer | `API -> worker -> Redis cfg lookup -> Postgres write -> OpenTelemetry emit.` |
+
+## What You Get
+
+- VS Code Copilot prompt bundle for `/steno`
+- comparison skill against caveman mode
+- local demo page with token benchmark views
+- install and export scripts for productized packaging
+- starter packs for Claude, Cursor, and ChatGPT
+
+## Demo
+
+The local demo lives at `demo/index.html` and already has the right product feel for GitHub-adjacent sharing.
+
+It includes:
+
+- a branded landing hero
+- baseline vs caveman vs stenographer examples
+- exact benchmark metrics from `gpt-tokenizer`
+- install, activate, and export flow
+- product and release-kit framing
+
+Important GitHub limitation: the interactive HTML demo cannot render inline inside a repository README. GitHub README pages can show images, SVGs, and links, but not an embedded local webpage.
+
+That is why this README now uses a visual SVG hero at the top. If you want the actual interactive demo to be public from the repo, the next step is to publish `demo/` with GitHub Pages and link to that hosted URL.
 
 ## Install
 
@@ -42,17 +78,9 @@ Remove it:
 & '.\install\uninstall.ps1'
 ```
 
-## Run The Demo
+Primary command: `/steno`
 
-Open `demo/index.html` in a browser.
-
-The page includes:
-
-- branded landing surface
-- install and export CTAs
-- baseline vs caveman vs stenographer comparison
-- exact token benchmark display
-- release-kit summary
+Legacy alias: `/stenographer-mode`
 
 ## Exact Benchmarking
 
@@ -83,14 +111,25 @@ Outputs:
 
 This creates a timestamped bundle under `dist/` containing product metadata, prompt bundles, demo assets, benchmark artifacts, install scripts, and platform packs.
 
-## Key Files
+## Repo Structure
 
-- `product.json`: product identity and platform coverage
-- `bundle.json`: distributable bundle manifest
-- `release.json`: release metadata and benchmark status
-- `package.json`: benchmark dependency and script entrypoint
+- `.github/skills/stenographer/SKILL.md`: VS Code Copilot skill
+- `.github/skills/caveman/SKILL.md`: caveman comparison skill
+- `bundles/vscode/steno.prompt.md`: VS Code user prompt bundle
+- `demo/`: local landing page and README visual assets
+- `packs/`: cross-platform starter packs
+- `install/`: installer and exporter scripts
+- `benchmarks/`: benchmark outputs
+- `scripts/generate-benchmarks.mjs`: exact token generation pipeline
 
-## Current Status
+## Supported Surfaces
+
+- VS Code Copilot Chat
+- Claude
+- Cursor
+- ChatGPT
+
+## Status
 
 - install: ready
 - export: ready
@@ -98,8 +137,6 @@ This creates a timestamped bundle under `dist/` containing product metadata, pro
 - benchmark: exact
 
 ## Repository
-
-This project is now initialized as a git repository and published on GitHub:
 
 - GitHub: `https://github.com/AkashAi7/stenographer-mode`
 - Default branch: `main`

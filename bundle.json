@@ -12,6 +12,7 @@
     "benchmark": "benchmarks/latest.json"
   },
   "install": {
+    "node": "scripts/steno-mode.mjs",
     "windows": "install/install.ps1",
     "uninstall": "install/uninstall.ps1",
     "export": "install/export-pack.ps1"

@@ -6,6 +6,9 @@ Shorthand-first token compression that stays readable, technical, and structural
 
 Stenographer Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
 
+![README profile image](./demo/readme-profile.png)
+
+![Steno mascot](./demo/steno-mascot.svg)
 
 ## Why This Exists
 
@@ -65,7 +68,35 @@ That is why this README now uses a visual SVG hero at the top. If you want the a
 
 ## Install
 
-Install the VS Code prompt into the roaming prompt profile:
+One command, no clone required. The current one-liners pull straight from GitHub via `npx`.
+
+| Target | Command |
+| --- | --- |
+| VS Code user prompts (global to your editor profile) | `npx --yes github:AkashAi7/stenographer-mode install --scope user` |
+| Current repo only (`.github/prompts/`) | `npx --yes github:AkashAi7/stenographer-mode install --scope project` |
+| Global CLI install | `npm install -g github:AkashAi7/stenographer-mode` |
+
+If you install the CLI globally, use:
+
+```powershell
+steno-mode install --scope user
+steno-mode install --scope project
+```
+
+If you already cloned or downloaded this repo, use the local scripts instead:
+
+```powershell
+npm install
+npm run install:user
+npm run install:project
+```
+
+Scopes:
+
+- `user`: copies `bundles/vscode/steno.prompt.md` into the VS Code roaming prompt profile.
+- `project`: copies the same prompt into `.github/prompts/steno.prompt.md` in the current working directory.
+
+PowerShell wrappers still work on Windows and now delegate to the same Node installer:
 
 ```powershell
 & '.\install\install.ps1'
@@ -74,6 +105,8 @@ Install the VS Code prompt into the roaming prompt profile:
 Remove it:
 
 ```powershell
+npm run uninstall:user
+npm run uninstall:project
 & '.\install\uninstall.ps1'
 ```
 
@@ -118,6 +151,7 @@ This creates a timestamped bundle under `dist/` containing product metadata, pro
 - `demo/`: local landing page and README visual assets
 - `packs/`: cross-platform starter packs
 - `install/`: installer and exporter scripts
+- `scripts/steno-mode.mjs`: cross-platform installer CLI
 - `benchmarks/`: benchmark outputs
 - `scripts/generate-benchmarks.mjs`: exact token generation pipeline
 

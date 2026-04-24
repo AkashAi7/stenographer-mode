@@ -61,6 +61,11 @@
         "state": "ready"
       },
       {
+        "name": "Node installer CLI",
+        "asset": "scripts/steno-mode.mjs",
+        "state": "ready"
+      },
+      {
         "name": "Windows installer",
         "asset": "install/install.ps1",
         "state": "ready"
@@ -69,6 +74,7 @@
   },
   "packaging": {
     "bundle": "bundle.json",
+    "nodeInstaller": "scripts/steno-mode.mjs",
     "installer": "install/install.ps1",
     "uninstaller": "install/uninstall.ps1",
     "exporter": "install/export-pack.ps1",

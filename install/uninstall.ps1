@@ -1,15 +1,14 @@
 $ErrorActionPreference = 'Stop'
 
-$userPrompts = Join-Path $env:APPDATA 'Code\User\prompts'
-$targets = @(
-  (Join-Path $userPrompts 'steno.prompt.md'),
-  (Join-Path $userPrompts 'stenographer.prompt.md'),
-  (Join-Path $userPrompts 'stenographer-mode.prompt.md')
-)
+$repoRoot = Split-Path -Parent $PSScriptRoot
+$cli = Join-Path $repoRoot 'scripts\steno-mode.mjs'
 
-foreach ($targetPrompt in $targets) {
-  if (Test-Path $targetPrompt) {
-    Remove-Item -Path $targetPrompt -Force
-    Write-Host "Removed $targetPrompt"
-  }
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+  throw 'Node.js is required. Install Node.js, then rerun this script or use npx --yes github:AkashAi7/stenographer-mode uninstall --scope user.'
+}
+
+& node $cli uninstall --scope user @args
+
+if ($LASTEXITCODE -ne 0) {
+  exit $LASTEXITCODE
 }

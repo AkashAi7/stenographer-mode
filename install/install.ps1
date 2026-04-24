@@ -1,23 +1,14 @@
 $ErrorActionPreference = 'Stop'
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$userPrompts = Join-Path $env:APPDATA 'Code\User\prompts'
-$bundlePrompt = Join-Path $repoRoot 'bundles\vscode\steno.prompt.md'
-$targetPrompt = Join-Path $userPrompts 'steno.prompt.md'
+$cli = Join-Path $repoRoot 'scripts\steno-mode.mjs'
 
-$oldPrompt = Join-Path $userPrompts 'stenographer.prompt.md'
-$legacyPrompt = Join-Path $userPrompts 'stenographer-mode.prompt.md'
-
-New-Item -ItemType Directory -Path $userPrompts -Force | Out-Null
-Copy-Item -Path $bundlePrompt -Destination $targetPrompt -Force
-
-if (Test-Path $oldPrompt) {
-	Remove-Item -Path $oldPrompt -Force
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+  throw 'Node.js is required. Install Node.js, then rerun this script or use npx --yes github:AkashAi7/stenographer-mode install --scope user.'
 }
 
-if (Test-Path $legacyPrompt) {
-	Remove-Item -Path $legacyPrompt -Force
-}
+& node $cli install --scope user @args
 
-Write-Host "Installed Stenographer Mode prompt to $targetPrompt"
-Write-Host "Use /steno in VS Code prompt picker or invoke by description."
+if ($LASTEXITCODE -ne 0) {
+  exit $LASTEXITCODE
+}

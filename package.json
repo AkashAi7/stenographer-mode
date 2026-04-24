@@ -3,8 +3,28 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "bin": {
+    "steno-mode": "./scripts/steno-mode.mjs"
+  },
+  "files": [
+    ".github/skills/",
+    "benchmarks/",
+    "bundles/",
+    "demo/",
+    "install/",
+    "packs/",
+    "scripts/",
+    "README.md",
+    "bundle.json",
+    "product.json",
+    "release.json"
+  ],
   "scripts": {
-    "benchmark": "node ./scripts/generate-benchmarks.mjs"
+    "benchmark": "node ./scripts/generate-benchmarks.mjs",
+    "install:user": "node ./scripts/steno-mode.mjs install --scope user",
+    "install:project": "node ./scripts/steno-mode.mjs install --scope project",
+    "uninstall:user": "node ./scripts/steno-mode.mjs uninstall --scope user",
+    "uninstall:project": "node ./scripts/steno-mode.mjs uninstall --scope project"
   },
   "dependencies": {
     "gpt-tokenizer": "^3.4.0"

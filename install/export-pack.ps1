@@ -32,6 +32,7 @@ $paths = @(
   'install\install.ps1',
   'install\uninstall.ps1',
   'install\export-pack.ps1',
+  'scripts\steno-mode.mjs',
   'scripts\generate-benchmarks.mjs'
 )
 

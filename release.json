@@ -9,6 +9,7 @@
   "artifacts": {
     "skill": ".github/skills/stenographer/SKILL.md",
     "vscodePrompt": "bundles/vscode/steno.prompt.md",
+    "nodeInstaller": "scripts/steno-mode.mjs",
     "installer": "install/install.ps1",
     "bundle": "bundle.json",
     "demo": "demo/index.html"

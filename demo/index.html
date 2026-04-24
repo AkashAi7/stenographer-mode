@@ -30,16 +30,15 @@
 
       <section class="hero panel">
         <div class="hero-copy">
-          <p class="eyebrow">Token Compression Study</p>
-          <h1>Stenographer mode compresses by shorthand discipline, not by blunt simplification.</h1>
+          <p class="eyebrow">Honest Token Study</p>
+          <h1>Stenographer mode compresses well for technical work, not universally.</h1>
           <p class="hero-text">
-            Demo compares baseline prose, caveman mode, and the new stenographer mode across the same prompts.
-            Token counts are generated from an exact benchmark artifact using <code>gpt-tokenizer</code>.
+            Demo compares baseline prose, caveman mode, and stenographer mode across 50+ samples in 7 categories.
+            Includes failure cases where steno underperforms. Token counts via <code>gpt-tokenizer</code>.
           </p>
           <div class="hero-badges">
-            <span>Exact literals preserved</span>
-            <span>Stable abbreviations</span>
-            <span>Symbol-first causal chains</span>
+            <span>Best for: code review, debugging, docs</span>
+            <span>Weaker for: onboarding, stakeholder</span>
           </div>
           <p class="status-line" id="copy-status">Primary command: <code>/steno</code></p>
         </div>
@@ -90,9 +89,9 @@
 
       <section class="metrics-grid">
         <article class="panel metric-card">
-          <p class="metric-label">Average exact tokens</p>
-          <p class="metric-value" id="avg-baseline">0</p>
-          <p class="metric-note">Baseline reference</p>
+          <p class="metric-label">Samples tested</p>
+          <p class="metric-value" id="sample-count">0</p>
+          <p class="metric-note">across 7 categories</p>
         </article>
         <article class="panel metric-card accent-caveman">
           <p class="metric-label">Caveman reduction</p>
@@ -104,6 +103,21 @@
           <p class="metric-value" id="steno-reduction">0%</p>
           <p class="metric-note">vs baseline</p>
         </article>
+        <article class="panel metric-card">
+          <p class="metric-label">Steno beats caveman</p>
+          <p class="metric-value" id="steno-wins">0%</p>
+          <p class="metric-note">of samples</p>
+        </article>
+      </section>
+
+      <section class="panel product-strip">
+        <div>
+          <p class="eyebrow">Category Breakdown</p>
+          <h2>Where steno helps and where it doesn't.</h2>
+        </div>
+        <div class="category-grid" id="category-grid">
+          <!-- Populated by app.js -->
+        </div>
       </section>
 
       <section class="panel product-strip">

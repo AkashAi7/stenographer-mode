@@ -54,9 +54,18 @@ const averages = benchmark?.averages ?? {
   steno: Math.round(samples.reduce((acc, sample) => acc + Math.ceil(sample.steno.length / 4), 0) / samples.length)
 };
 
-document.getElementById("avg-baseline").textContent = String(averages.baseline);
+// Update metrics
+const sampleCount = benchmark?.sampleCount ?? samples.length;
+const stenoBeatsPct = averages.stenoBeatsCavemanPct ?? 0;
+
+const sampleCountEl = document.getElementById("sample-count");
+const stenoWinsEl = document.getElementById("steno-wins");
+
+if (sampleCountEl) sampleCountEl.textContent = String(sampleCount);
 document.getElementById("caveman-reduction").textContent = `${averages.cavemanReduction ?? pctReduction(averages.baseline, averages.caveman)}%`;
 document.getElementById("steno-reduction").textContent = `${averages.stenoReduction ?? pctReduction(averages.baseline, averages.steno)}%`;
+if (stenoWinsEl) stenoWinsEl.textContent = `${stenoBeatsPct}%`;
+
 platformCount.textContent = String(productIdentity.platforms);
 
 samples.forEach((sample, index) => {
@@ -148,3 +157,37 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
 
 renderComparison(0);
 renderBars();
+renderCategoryStats();
+
+function renderCategoryStats() {
+  const categoryGrid = document.getElementById("category-grid");
+  if (!categoryGrid) return;
+  
+  const categoryStats = benchmark?.categoryStats;
+  if (!categoryStats) {
+    categoryGrid.innerHTML = "<p>Run <code>npm run benchmark</code> to generate category stats.</p>";
+    return;
+  }
+  
+  categoryGrid.innerHTML = "";
+  
+  const sortedCategories = Object.entries(categoryStats).sort((a, b) => {
+    // Sort by steno reduction descending (best performance first)
+    return b[1].stenoReduction - a[1].stenoReduction;
+  });
+  
+  for (const [category, stats] of sortedCategories) {
+    const card = document.createElement("article");
+    const isStenoFavored = stats.verdict === "steno-favored";
+    const verdictClass = isStenoFavored ? "accent-steno" : "accent-caveman";
+    const verdictLabel = isStenoFavored ? "✓ steno wins" : "⚠ caveman wins";
+    
+    card.className = `metric-card ${verdictClass}`;
+    card.innerHTML = `
+      <p class="metric-label">${category}</p>
+      <p class="metric-value">${stats.stenoReduction}%</p>
+      <p class="metric-note">${stats.count} samples · ${verdictLabel}</p>
+    `;
+    categoryGrid.append(card);
+  }
+}

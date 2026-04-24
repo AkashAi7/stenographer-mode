@@ -58,10 +58,11 @@
   </g>
   <g>
     <rect x="816" y="464" width="272" height="128" rx="26" fill="url(#stenoGlow)" stroke="#3F2F23" stroke-opacity="0.08"/>
-    <text x="844" y="506" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="28" font-weight="700">Stenographer</text>
-    <text x="1014" y="506" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">20 tok</text>
-    <text x="844" y="548" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">Retry ctr in req handler -></text>
-    <text x="844" y="574" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">resets each attempt. Persist ctr.</text>
+    <text x="844" y="506" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="26" font-weight="700">Stenographer</text>
+    <text x="1038" y="506" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">20 tok</text>
+    <text x="844" y="544" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16">Retry ctr in req</text>
+    <text x="844" y="568" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16">handler -> resets each</text>
+    <text x="844" y="590" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16">attempt. Persist ctr.</text>
   </g>
   <path d="M464 528H504" stroke="#F2C14E" stroke-width="4" stroke-linecap="round"/>
   <path d="M776 528H816" stroke="#F2C14E" stroke-width="4" stroke-linecap="round"/>

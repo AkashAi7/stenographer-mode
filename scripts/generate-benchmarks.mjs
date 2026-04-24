@@ -27,10 +27,37 @@ const samples = corpus.samples.map((sample) => {
       caveman: cavemanTokens,
       steno: stenoTokens,
       cavemanReduction: pctReduction(baselineTokens, cavemanTokens),
-      stenoReduction: pctReduction(baselineTokens, stenoTokens)
+      stenoReduction: pctReduction(baselineTokens, stenoTokens),
+      stenoBeatsCaveman: stenoTokens < cavemanTokens
     }
   };
 });
+
+// Calculate category-level statistics
+const categories = [...new Set(samples.map(s => s.category).filter(Boolean))];
+const categoryStats = {};
+
+for (const category of categories) {
+  const catSamples = samples.filter(s => s.category === category);
+  const count = catSamples.length;
+  
+  const avgBaseline = Math.round(catSamples.reduce((sum, s) => sum + s.tokens.baseline, 0) / count);
+  const avgCaveman = Math.round(catSamples.reduce((sum, s) => sum + s.tokens.caveman, 0) / count);
+  const avgSteno = Math.round(catSamples.reduce((sum, s) => sum + s.tokens.steno, 0) / count);
+  
+  const stenoBeatsCavemanCount = catSamples.filter(s => s.tokens.stenoBeatsCaveman).length;
+  
+  categoryStats[category] = {
+    count,
+    avgBaseline,
+    avgCaveman,
+    avgSteno,
+    cavemanReduction: pctReduction(avgBaseline, avgCaveman),
+    stenoReduction: pctReduction(avgBaseline, avgSteno),
+    stenoBeatsCavemanPct: Math.round((stenoBeatsCavemanCount / count) * 100),
+    verdict: avgSteno <= avgCaveman ? "steno-favored" : "caveman-favored"
+  };
+}
 
 const averages = {
   baseline: Math.round(samples.reduce((sum, sample) => sum + sample.tokens.baseline, 0) / samples.length),
@@ -38,14 +65,20 @@ const averages = {
   steno: Math.round(samples.reduce((sum, sample) => sum + sample.tokens.steno, 0) / samples.length)
 };
 
+const stenoBeatsCavemanTotal = samples.filter(s => s.tokens.stenoBeatsCaveman).length;
+
 const benchmark = {
   tokenizer: "gpt-tokenizer",
   generatedAt: new Date().toISOString(),
+  sampleCount: samples.length,
+  categories: categories.length,
   averages: {
     ...averages,
     cavemanReduction: pctReduction(averages.baseline, averages.caveman),
-    stenoReduction: pctReduction(averages.baseline, averages.steno)
+    stenoReduction: pctReduction(averages.baseline, averages.steno),
+    stenoBeatsCavemanPct: Math.round((stenoBeatsCavemanTotal / samples.length) * 100)
   },
+  categoryStats,
   samples
 };
 

@@ -15,6 +15,36 @@ Stenographer Mode is a prompt product for compact technical responses. It compre
 - Raw shortening can save tokens but damage scanability and precision.
 - Stenographer mode is built to keep causality, identifiers, commands, and code-adjacent clarity intact while staying compact.
 
+## Honest Scope
+
+Stenographer mode is a specialized response style, not a universal improvement. It works well in some contexts and poorly in others.
+
+### When steno helps
+
+| Use case | Why it works |
+| --- | --- |
+| Code review comments | Concise feedback, technical literals preserved |
+| Bug explanations | Causal chains stay clear with arrow notation |
+| Architecture summaries | Flow descriptions compress well |
+| API and config docs | Structured info maps to shorthand naturally |
+| Debugging Q&A | Fast scan, exact errors and paths preserved |
+
+### When steno hurts
+
+| Use case | Why it fails |
+| --- | --- |
+| Onboarding and tutorials | Beginners need prose, not shorthand |
+| Stakeholder communication | Executives expect full sentences |
+| Ambiguous problem-solving | Nuance gets lost in compression |
+| Empathetic responses | Human warmth requires words |
+| Teaching new concepts | Analogies and explanations need space |
+
+### Tradeoffs
+
+- **Reader cost**: Steno requires learning abbreviations. That is cognitive overhead for unfamiliar readers.
+- **Team fit**: Works well for experienced engineers who value scan speed. May frustrate mixed teams or external collaborators.
+- **Context dependency**: Not every response should be compressed. Use judgment.
+
 ## Quick Comparison
 
 Prompt: `Why does this API retry loop never stop?`
@@ -115,7 +145,9 @@ Legacy alias: `/stenographer-mode`
 
 ## Exact Benchmarking
 
-This project uses `gpt-tokenizer` for exact token counts.
+This project uses `gpt-tokenizer` for exact token counts across a corpus of 50+ samples spanning 7 categories: debugging, code-review, architecture, docs, onboarding, ambiguous, and stakeholder.
+
+The corpus intentionally includes failure cases where steno underperforms to provide honest evaluation.
 
 Install dependencies:
 

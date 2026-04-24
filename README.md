@@ -97,10 +97,9 @@ This creates a timestamped bundle under `dist/` containing product metadata, pro
 - demo: ready
 - benchmark: exact
 
-## Repo Note
+## Repository
 
-This folder currently has product files and documentation, but it is not initialized as a git repository yet. If you want a full repo, run:
+This project is now initialized as a git repository and published on GitHub:
 
-```powershell
-git init
-```
+- GitHub: `https://github.com/AkashAi7/stenographer-mode`
+- Default branch: `main`

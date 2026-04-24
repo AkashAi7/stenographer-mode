@@ -1,6 +1,6 @@
 window.__STENO_BENCHMARK__ = {
   "tokenizer": "gpt-tokenizer",
-  "generatedAt": "2026-04-24T11:11:28.126Z",
+  "generatedAt": "2026-04-24T12:21:50.606Z",
   "sampleCount": 51,
   "categories": 7,
   "averages": {

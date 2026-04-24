@@ -8,6 +8,7 @@ Stenographer Mode is a prompt product for compact technical responses. It compre
 
 ![README profile image](./demo/readme-profile.png)
 
+![Steno mascot](./demo/steno-mascot.svg)
 
 ## Why This Exists
 
@@ -89,6 +90,53 @@ Stenographer mode is a specialized response style, not a universal improvement. 
 - **Reader cost**: Steno requires learning abbreviations. That is cognitive overhead for unfamiliar readers.
 - **Team fit**: Works well for experienced engineers who value scan speed. May frustrate mixed teams or external collaborators.
 - **Context dependency**: Not every response should be compressed. Use judgment.
+
+## How It Works
+
+Stenographer mode is a **prompt instruction** that tells the AI to compress its responses using consistent rules. No ML models, no preprocessing — just a prompt that enforces formatting discipline.
+
+The mode applies four compression tactics:
+
+1. **Shorthand vocabulary** — Stable abbreviations like `cfg`, `auth`, `deps`, `req`, `resp`, `impl`, `ctx` that compress common technical words without losing meaning.
+
+2. **Symbolic linking** — Arrow notation (`->`, `=>`) for causal chains, plus symbols (`w/`, `w/o`, `+`, `vs`) that compress connective phrases.
+
+3. **Literal preservation** — Code snippets, file paths, commands, error messages, and identifiers stay **exactly as written**. No lossy compression on what matters.
+
+4. **Structured layout** — Bullets, tables, and section breaks instead of dense paragraphs. Fast scanning over slow reading.
+
+The result is output that looks like shorthand notes from a senior engineer — dense, precise, and scannable.
+
+## Usage
+
+### VS Code Copilot Chat
+
+After installation, type `/steno` followed by your prompt:
+
+```
+/steno Why does this test fail intermittently?
+```
+
+Switch compression levels inline:
+
+```
+/steno lite  — tight professional prose
+/steno brief — default shorthand (recommended)
+/steno court — dense expert shorthand
+/steno machine — maximum compression
+```
+
+### Claude / ChatGPT / Cursor
+
+Paste the contents of the appropriate pack into your system prompt or custom instructions:
+
+| Platform | File |
+|----------|------|
+| Claude | `packs/claude/system.txt` |
+| ChatGPT | `packs/chatgpt/custom-instructions.txt` |
+| Cursor | `packs/cursor/rules.txt` |
+
+Then use naturally — the AI will respond in steno style by default.
 
 ## Quick Comparison
 

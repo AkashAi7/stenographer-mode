@@ -1,6 +1,6 @@
 {
   "name": "Stenographer Mode",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "releaseChannel": "preview",
   "tagline": "Shorthand-first token compression with readable technical precision.",
   "productId": "stenographer-mode",
@@ -28,7 +28,7 @@
   },
   "benchmark": {
     "tokenizer": "gpt-tokenizer",
-    "generatedAt": "2026-04-24T11:11:28.126Z",
+    "generatedAt": "2026-04-24T12:21:50.606Z",
     "artifact": "benchmarks/latest.json"
   }
 }

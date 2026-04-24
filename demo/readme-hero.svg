@@ -32,39 +32,39 @@
     <rect x="130" y="78" width="1020" height="564" rx="30" fill="url(#bg)"/>
     <rect x="130.5" y="78.5" width="1019" height="563" rx="29.5" stroke="#3F2F23" stroke-opacity="0.08"/>
   </g>
-  <text x="192" y="160" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18" letter-spacing="4.8">TOKEN COMPRESSION STUDY</text>
-  <text x="192" y="222" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="56" font-weight="700">Compact technical replies.</text>
-  <text x="192" y="286" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="56" font-weight="700">Readable at speed.</text>
-  <text x="192" y="338" fill="#6A5F57" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="24">Comparison examples below show baseline, caveman, and stenographer on the same prompt.</text>
-  <rect x="192" y="376" width="212" height="42" rx="21" fill="#FFFFFF" fill-opacity="0.78" stroke="#3F2F23" stroke-opacity="0.1"/>
-  <text x="216" y="403" fill="#1F1B18" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">/steno</text>
-  <rect x="430" y="376" width="198" height="42" rx="21" fill="#FFFFFF" fill-opacity="0.78" stroke="#3F2F23" stroke-opacity="0.1"/>
-  <text x="454" y="403" fill="#1F1B18" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">exact literals safe</text>
-  <rect x="654" y="376" width="182" height="42" rx="21" fill="#FFFFFF" fill-opacity="0.78" stroke="#3F2F23" stroke-opacity="0.1"/>
-  <text x="678" y="403" fill="#1F1B18" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">stable shorthand</text>
+  <text x="192" y="160" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16" letter-spacing="4">TOKEN COMPRESSION STUDY</text>
+  <text x="192" y="222" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="52" font-weight="700">Compact technical replies.</text>
+  <text x="192" y="280" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="52" font-weight="700">Readable at speed.</text>
+  <text x="192" y="330" fill="#6A5F57" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="20">Comparison: baseline, caveman, and stenographer on the same prompt.</text>
+  <rect x="192" y="368" width="100" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.78" stroke="#3F2F23" stroke-opacity="0.1"/>
+  <text x="242" y="393" text-anchor="middle" fill="#1F1B18" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16">/steno</text>
+  <rect x="308" y="368" width="212" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.78" stroke="#3F2F23" stroke-opacity="0.1"/>
+  <text x="414" y="393" text-anchor="middle" fill="#1F1B18" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16">exact literals safe</text>
+  <rect x="536" y="368" width="184" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.78" stroke="#3F2F23" stroke-opacity="0.1"/>
+  <text x="628" y="393" text-anchor="middle" fill="#1F1B18" font-family="'IBM Plex Mono', Consolas, monospace" font-size="16">stable shorthand</text>
   <g>
-    <rect x="192" y="464" width="272" height="128" rx="26" fill="#6C7A89" fill-opacity="0.1" stroke="#3F2F23" stroke-opacity="0.08"/>
-    <text x="220" y="506" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="28" font-weight="700">Baseline</text>
-    <text x="372" y="506" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">52 tok</text>
-    <text x="220" y="548" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">The retry loop never stops</text>
-    <text x="220" y="574" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">because the counter resets</text>
+    <rect x="192" y="440" width="280" height="120" rx="24" fill="#6C7A89" fill-opacity="0.1" stroke="#3F2F23" stroke-opacity="0.08"/>
+    <text x="218" y="478" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="24" font-weight="700">Baseline</text>
+    <text x="350" y="478" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="15">52 tok</text>
+    <text x="218" y="514" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14">The retry loop never stops</text>
+    <text x="218" y="536" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14">because the counter resets</text>
   </g>
   <g>
-    <rect x="504" y="464" width="272" height="128" rx="26" fill="url(#cavemanGlow)" stroke="#3F2F23" stroke-opacity="0.08"/>
-    <text x="532" y="506" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="28" font-weight="700">Caveman</text>
-    <text x="690" y="506" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">27 tok</text>
-    <text x="532" y="548" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">Counter in handler. Each retry</text>
-    <text x="532" y="574" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">resets. Persist state.</text>
+    <rect x="496" y="440" width="280" height="120" rx="24" fill="url(#cavemanGlow)" stroke="#3F2F23" stroke-opacity="0.08"/>
+    <text x="522" y="478" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="24" font-weight="700">Caveman</text>
+    <text x="660" y="478" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="15">27 tok</text>
+    <text x="522" y="514" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14">Counter in handler.</text>
+    <text x="522" y="536" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14">Each retry resets. Persist.</text>
   </g>
   <g>
-    <rect x="816" y="464" width="272" height="128" rx="26" fill="url(#stenoGlow)" stroke="#3F2F23" stroke-opacity="0.08"/>
-    <text x="844" y="506" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="26" font-weight="700">Stenographer</text>
-    <text x="1012" y="506" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="18">20 tok</text>
-    <text x="844" y="548" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">Retry ctr in req handler -&gt;</text>
-    <text x="844" y="574" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="17">resets each attempt. Persist ctr.</text>
+    <rect x="800" y="440" width="280" height="120" rx="24" fill="url(#stenoGlow)" stroke="#3F2F23" stroke-opacity="0.08"/>
+    <text x="826" y="478" fill="#1F1B18" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="22" font-weight="700">Stenographer</text>
+    <text x="976" y="478" fill="#6A5F57" font-family="'IBM Plex Mono', Consolas, monospace" font-size="15">20 tok</text>
+    <text x="826" y="514" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14">Retry ctr in handler</text>
+    <text x="826" y="536" fill="#3F2F23" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14">resets. Persist ctr.</text>
   </g>
-  <path d="M464 528H504" stroke="#F2C14E" stroke-width="4" stroke-linecap="round"/>
-  <path d="M776 528H816" stroke="#F2C14E" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="484" cy="528" r="6" fill="#F2C14E"/>
-  <circle cx="796" cy="528" r="6" fill="#F2C14E"/>
+  <path d="M472 500H496" stroke="#F2C14E" stroke-width="4" stroke-linecap="round"/>
+  <path d="M776 500H800" stroke="#F2C14E" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="484" cy="500" r="6" fill="#F2C14E"/>
+  <circle cx="788" cy="500" r="6" fill="#F2C14E"/>
 </svg>

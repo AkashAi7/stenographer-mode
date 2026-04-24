@@ -8,7 +8,6 @@ Stenographer Mode is a prompt product for compact technical responses. It compre
 
 ![README profile image](./demo/readme-profile.png)
 
-![Steno mascot](./demo/steno-mascot.svg)
 
 ## Why This Exists
 

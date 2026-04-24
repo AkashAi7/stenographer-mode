@@ -6,7 +6,6 @@ Shorthand-first token compression that stays readable, technical, and structural
 
 Stenographer Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
 
-![Steno mascot](./demo/steno-mascot.svg)
 
 ## Why This Exists
 

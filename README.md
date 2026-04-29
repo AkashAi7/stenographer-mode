@@ -4,8 +4,6 @@
 
 <video src="./steno-mode-demo1.mp4" controls muted playsinline width="100%"></video>
 
-[Watch the demo video](./steno-mode-demo1.mp4)
-
 Shorthand-first token compression that stays readable, technical, and structurally precise.
 
 Steno Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.

@@ -1,16 +1,20 @@
-# Stenographer Mode
+# Steno Mode
 
-![Stenographer Mode hero](./demo/readme-hero.svg)
+![Steno Mode hero](./demo/readme-hero.svg)
+
+<video src="./steno-mode-demo1.mp4" controls muted playsinline width="100%"></video>
+
+[Watch the demo video](./steno-mode-demo1.mp4)
 
 Shorthand-first token compression that stays readable, technical, and structurally precise.
 
-Stenographer Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
+Steno Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
 
 ## Why This Exists
 
 - Technical answers often waste tokens on filler, framing, and repeated setup.
 - Raw shortening can save tokens but damage scanability and precision.
-- Stenographer mode is built to keep causality, identifiers, commands, and code-adjacent clarity intact while staying compact.
+- Steno mode is built to keep causality, identifiers, commands, and code-adjacent clarity intact while staying compact.
 
 ## Why Steno
 
@@ -20,7 +24,7 @@ AI responses are expensive. Every token costs money, time, and attention. Most t
 
 ### The Solution
 
-Stenographer mode applies **structured compression** — not random shortening, but deliberate shorthand with rules that keep technical content intact.
+Steno mode applies **structured compression** — not random shortening, but deliberate shorthand with rules that keep technical content intact.
 
 | What steno preserves | Example |
 | --- | --- |
@@ -59,7 +63,7 @@ Steno is not about saving tokens at any cost. It is about saving the right token
 
 ## Honest Scope
 
-Stenographer mode is a specialized response style, not a universal improvement. It works well in some contexts and poorly in others.
+Steno mode is a specialized response style, not a universal improvement. It works well in some contexts and poorly in others.
 
 ### When steno helps
 
@@ -81,15 +85,9 @@ Stenographer mode is a specialized response style, not a universal improvement. 
 | Empathetic responses | Human warmth requires words |
 | Teaching new concepts | Analogies and explanations need space |
 
-### Tradeoffs
-
-- **Reader cost**: Steno requires learning abbreviations. That is cognitive overhead for unfamiliar readers.
-- **Team fit**: Works well for experienced engineers who value scan speed. May frustrate mixed teams or external collaborators.
-- **Context dependency**: Not every response should be compressed. Use judgment.
-
 ## How It Works
 
-Stenographer mode is a **prompt instruction** that tells the AI to compress its responses using consistent rules. No ML models, no preprocessing — just a prompt that enforces formatting discipline.
+Steno mode is a **prompt instruction** that tells the AI to compress its responses using consistent rules. No ML models, no preprocessing — just a prompt that enforces formatting discipline.
 
 The mode applies four compression tactics:
 
@@ -162,7 +160,7 @@ Prompt: `Why does this API retry loop never stop?`
 | --- | --- | ---: | --- |
 | Baseline | `The retry loop never stops because the retry counter is stored inside the request handler, so it resets to zero on every new attempt. Move the counter to state that survives across attempts.` | 52 | Clear, but long |
 | Caveman | `Retry counter stored inside request handler. Each retry resets counter to zero. Terminal condition never hit. Move counter to state that survives retries.` | 27 | Fast, but rough |
-| Stenographer | `Retry ctr lives inside req handler -> resets each attempt -> no terminal hit. Persist ctr across attempts.` | 20 | Compact and still technical |
+| Steno | `Retry ctr lives inside req handler -> resets each attempt -> no terminal hit. Persist ctr across attempts.` | 20 | Compact and still technical |
 
 Prompt: `Review this caching change.`
 
@@ -170,7 +168,7 @@ Prompt: `Review this caching change.`
 | --- | --- |
 | Baseline | `This change improves cache hit rate, but it also introduces a stale data risk because invalidation only occurs on create and not on update or delete.` |
 | Caveman | `Cache hit rate better. Stale data risk. Invalidation only on create, not update/delete.` |
-| Stenographer | `Hit rate up, but cache invalidation only covers create -> stale reads on update/delete paths.` |
+| Steno | `Hit rate up, but cache invalidation only covers create -> stale reads on update/delete paths.` |
 
 Prompt: `Explain the architecture.`
 
@@ -178,29 +176,7 @@ Prompt: `Explain the architecture.`
 | --- | --- |
 | Baseline | `The worker receives jobs from the API, enriches them with configuration from Redis, writes results to PostgreSQL, and emits metrics through OpenTelemetry.` |
 | Caveman | `API sends jobs to worker. Worker reads Redis config, writes Postgres, emits telemetry.` |
-| Stenographer | `API -> worker -> Redis cfg lookup -> Postgres write -> OpenTelemetry emit.` |
-
-## What You Get
-
-- VS Code Copilot prompt bundle for `/steno`
-- VS Code custom agent for `Steno` in Agent mode
-- comparison skill against caveman mode
-- local demo page with token benchmark views
-- install and export scripts for productized packaging
-- starter packs for Claude, Cursor, and ChatGPT
-
-## Demo
-
-The local demo lives at `demo/index.html`.
-
-It includes:
-
-- a branded landing hero
-- baseline vs caveman vs stenographer examples
-- exact benchmark metrics from `gpt-tokenizer`
-- install, activate, and export flow
-
-GitHub READMEs cannot embed the interactive HTML page directly, so the full experience stays in `demo/` while the README uses static visuals.
+| Steno | `API -> worker -> Redis cfg lookup -> Postgres write -> OpenTelemetry emit.` |
 
 ## Install
 
@@ -249,8 +225,6 @@ npm run uninstall:project
 Primary command: `/steno`
 
 Agent name: `Steno`
-
-Legacy alias: `/stenographer-mode`
 
 ## Exact Benchmarking
 

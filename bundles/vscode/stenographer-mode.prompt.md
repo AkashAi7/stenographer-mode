@@ -1,12 +1,12 @@
 ---
 mode: ask
-description: Activate Stenographer Mode for shorthand-first token reduction with readable technical precision. Use for compressed responses, steno mode, shorthand mode, or token-saving replies.
+description: Activate Steno Mode for shorthand-first token reduction with readable technical precision. Use for compressed responses, steno mode, shorthand mode, or token-saving replies.
 tools: ["changes", "codebase", "fetch", "findTestFiles", "githubRepo", "problems", "runCommands", "runTasks", "search", "searchResults", "terminalLastCommand", "terminalSelection", "usages", "vscodeAPI"]
 ---
 
-# Stenographer Mode
+# Steno Mode
 
-Respond in Stenographer Mode.
+Respond in Steno Mode.
 
 Contract:
 - compress prose through consistent shorthand and symbolic links

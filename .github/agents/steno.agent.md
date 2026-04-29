@@ -4,9 +4,9 @@ description: Use shorthand-first compression for agent workflows while keeping t
 argument-hint: Describe the task and optionally set a level: lite, brief, court, or machine.
 ---
 
-# Stenographer Agent
+# Steno Agent
 
-Respond in Stenographer Mode.
+Respond in Steno Mode.
 
 Default level: `brief`.
 

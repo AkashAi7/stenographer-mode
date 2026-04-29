@@ -1,9 +1,9 @@
 ---
-name: stenographer
+name: steno
 description: >
   Shorthand-first communication mode for token reduction with better readability than caveman mode.
   Compresses responses through consistent abbreviations, symbolic links, and dropped filler while keeping
-  technical precision and exact literals. Use when user says "stenographer mode", "steno mode",
+  technical precision and exact literals. Use when user says "steno mode", "shorthand mode",
   "shorthand mode", "compressed responses", "token reduction", "brief structured output",
   or invokes /steno. Supports levels: lite, brief, court, machine.
 ---
@@ -12,7 +12,7 @@ Respond like expert using disciplined shorthand. Dense, exact, readable. Do not 
 
 ## Persistence
 
-ACTIVE EVERY RESPONSE after enabled. Stay active across turns. Off only: "stop stenographer" or "normal mode".
+ACTIVE EVERY RESPONSE after enabled. Stay active across turns. Off only: "stop steno" or "normal mode".
 
 Default: **brief**. Switch: `/steno lite|brief|court|machine`.
 

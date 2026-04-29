@@ -15,6 +15,7 @@ $paths = @(
   'bundle.json',
   'benchmarks\corpus.json',
   'benchmarks\latest.json',
+  '.github\agents\steno.agent.md',
   '.github\skills\stenographer\SKILL.md',
   '.github\skills\caveman\SKILL.md',
   'bundles\vscode\steno.prompt.md',

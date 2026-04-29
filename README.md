@@ -122,6 +122,26 @@ Switch compression levels inline:
 /steno machine — maximum compression
 ```
 
+### VS Code Agent Mode
+
+Switch to the `Steno` custom agent from the agents picker, then ask normally:
+
+```text
+Review this diff for regressions.
+```
+
+Override the default level inline when needed:
+
+```text
+Use lite for this explanation.
+Use court for terse progress updates.
+```
+
+Practical split:
+
+- Ask mode: `/steno` prompt file for one-off compressed replies
+- Agent mode: `Steno` custom agent for compressed progress updates, plans, findings, and final summaries
+
 ### Claude / ChatGPT / Cursor
 
 Paste the contents of the appropriate pack into your system prompt or custom instructions:
@@ -163,6 +183,7 @@ Prompt: `Explain the architecture.`
 ## What You Get
 
 - VS Code Copilot prompt bundle for `/steno`
+- VS Code custom agent for `Steno` in Agent mode
 - comparison skill against caveman mode
 - local demo page with token benchmark views
 - install and export scripts for productized packaging
@@ -187,8 +208,8 @@ One command, no clone required. The current one-liners pull straight from GitHub
 
 | Target | Command |
 | --- | --- |
-| VS Code user prompts (global to your editor profile) | `npx --yes github:AkashAi7/stenographer-mode install --scope user` |
-| Current repo only (`.github/prompts/`) | `npx --yes github:AkashAi7/stenographer-mode install --scope project` |
+| VS Code user profile (Ask prompt + Agent agent) | `npx --yes github:AkashAi7/stenographer-mode install --scope user` |
+| Current repo only (`.github/prompts/` + `.github/agents/`) | `npx --yes github:AkashAi7/stenographer-mode install --scope project` |
 | Global CLI install | `npm install -g github:AkashAi7/stenographer-mode` |
 
 If you install the CLI globally, use:
@@ -208,8 +229,8 @@ npm run install:project
 
 Scopes:
 
-- `user`: copies `bundles/vscode/steno.prompt.md` into the VS Code roaming prompt profile.
-- `project`: copies the same prompt into `.github/prompts/steno.prompt.md` in the current working directory.
+- `user`: copies `bundles/vscode/steno.prompt.md` into the VS Code roaming prompt profile and installs `.github/agents/steno.agent.md` into `~/.copilot/agents/`.
+- `project`: copies the prompt into `.github/prompts/steno.prompt.md` and the custom agent into `.github/agents/steno.agent.md` in the current working directory.
 
 PowerShell wrappers still work on Windows and now delegate to the same Node installer:
 
@@ -226,6 +247,8 @@ npm run uninstall:project
 ```
 
 Primary command: `/steno`
+
+Agent name: `Steno`
 
 Legacy alias: `/stenographer-mode`
 

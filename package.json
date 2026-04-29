@@ -7,6 +7,7 @@
     "steno-mode": "./scripts/steno-mode.mjs"
   },
   "files": [
+    ".github/agents/",
     ".github/skills/",
     "benchmarks/",
     "bundles/",

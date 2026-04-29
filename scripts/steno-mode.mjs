@@ -10,7 +10,9 @@ const command = process.argv[2] ?? "install";
 const options = parseArgs(process.argv.slice(3));
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePrompt = path.join(repoRoot, "bundles", "vscode", "steno.prompt.md");
+const sourceAgent = path.join(repoRoot, ".github", "agents", "steno.agent.md");
 const promptFileName = "steno.prompt.md";
+const agentFileName = "steno.agent.md";
 const legacyPromptFileNames = ["stenographer.prompt.md", "stenographer-mode.prompt.md"];
 
 const scope = options.scope ?? "user";
@@ -85,14 +87,16 @@ function resolveTargets(scopeValue, projectDirOption) {
   if (normalizedScope === "user" || normalizedScope === "all") {
     targets.push({
       label: "user",
-      directory: resolveUserPromptDirectory(),
+      promptDirectory: resolveUserPromptDirectory(),
+      agentDirectory: resolveUserAgentDirectory(),
     });
   }
 
   if (normalizedScope === "project" || normalizedScope === "all") {
     targets.push({
       label: "project",
-      directory: path.join(projectRoot, ".github", "prompts"),
+      promptDirectory: path.join(projectRoot, ".github", "prompts"),
+      agentDirectory: path.join(projectRoot, ".github", "agents"),
     });
   }
 
@@ -119,31 +123,39 @@ function resolveUserPromptDirectory() {
   }
 }
 
+function resolveUserAgentDirectory() {
+  return path.join(os.homedir(), ".copilot", "agents");
+}
+
 async function installTargets(targets) {
   for (const target of targets) {
-    await mkdir(target.directory, { recursive: true });
+    await mkdir(target.promptDirectory, { recursive: true });
+    await mkdir(target.agentDirectory, { recursive: true });
 
-    const destination = path.join(target.directory, promptFileName);
-    await copyFile(sourcePrompt, destination);
+    const promptDestination = path.join(target.promptDirectory, promptFileName);
+    const agentDestination = path.join(target.agentDirectory, agentFileName);
+    await copyFile(sourcePrompt, promptDestination);
+    await copyFile(sourceAgent, agentDestination);
 
     for (const legacyFileName of legacyPromptFileNames) {
-      await rm(path.join(target.directory, legacyFileName), { force: true });
+      await rm(path.join(target.promptDirectory, legacyFileName), { force: true });
     }
 
-    console.log(`Installed ${target.label} prompt -> ${destination}`);
+    console.log(`Installed ${target.label} prompt -> ${promptDestination}`);
+    console.log(`Installed ${target.label} agent -> ${agentDestination}`);
   }
 
-  console.log("Use /steno in VS Code prompt picker or invoke by description.");
+  console.log("Use /steno in Ask mode or switch to the Steno agent in Agent mode.");
 }
 
 async function uninstallTargets(targets) {
   let removedCount = 0;
 
   for (const target of targets) {
-    const fileNames = [promptFileName, ...legacyPromptFileNames];
+    const promptFileNames = [promptFileName, ...legacyPromptFileNames];
 
-    for (const fileName of fileNames) {
-      const targetPath = path.join(target.directory, fileName);
+    for (const fileName of promptFileNames) {
+      const targetPath = path.join(target.promptDirectory, fileName);
       const removed = await removeIfExists(targetPath);
 
       if (removed) {
@@ -151,10 +163,18 @@ async function uninstallTargets(targets) {
         console.log(`Removed ${targetPath}`);
       }
     }
+
+    const agentPath = path.join(target.agentDirectory, agentFileName);
+    const removedAgent = await removeIfExists(agentPath);
+
+    if (removedAgent) {
+      removedCount += 1;
+      console.log(`Removed ${agentPath}`);
+    }
   }
 
   if (removedCount === 0) {
-    console.log("No installed prompt files found for the requested scope.");
+    console.log("No installed prompt or agent files found for the requested scope.");
   }
 }
 
@@ -174,6 +194,7 @@ async function removeIfExists(targetPath) {
 
 function printTargets(targets) {
   for (const target of targets) {
-    console.log(`${target.label}: ${path.join(target.directory, promptFileName)}`);
+    console.log(`${target.label} prompt: ${path.join(target.promptDirectory, promptFileName)}`);
+    console.log(`${target.label} agent: ${path.join(target.agentDirectory, agentFileName)}`);
   }
 }

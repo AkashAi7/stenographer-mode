@@ -26,6 +26,11 @@
     "status": "productized",
     "platforms": [
       {
+        "name": "VS Code custom agent",
+        "asset": ".github/agents/steno.agent.md",
+        "state": "ready"
+      },
+      {
         "name": "VS Code Copilot Chat",
         "asset": ".github/skills/stenographer/SKILL.md",
         "state": "ready"
@@ -74,6 +79,7 @@
   },
   "packaging": {
     "bundle": "bundle.json",
+    "agent": ".github/agents/steno.agent.md",
     "nodeInstaller": "scripts/steno-mode.mjs",
     "installer": "install/install.ps1",
     "uninstaller": "install/uninstall.ps1",

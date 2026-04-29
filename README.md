@@ -6,10 +6,6 @@ Shorthand-first token compression that stays readable, technical, and structural
 
 Stenographer Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
 
-![README profile image](./demo/readme-profile.png)
-
-
-
 ## Why This Exists
 
 - Technical answers often waste tokens on filler, framing, and repeated setup.
@@ -174,7 +170,7 @@ Prompt: `Explain the architecture.`
 
 ## Demo
 
-The local demo lives at `demo/index.html` and already has the right product feel for GitHub-adjacent sharing.
+The local demo lives at `demo/index.html`.
 
 It includes:
 
@@ -182,11 +178,8 @@ It includes:
 - baseline vs caveman vs stenographer examples
 - exact benchmark metrics from `gpt-tokenizer`
 - install, activate, and export flow
-- product and release-kit framing
 
-Important GitHub limitation: the interactive HTML demo cannot render inline inside a repository README. GitHub README pages can show images, SVGs, and links, but not an embedded local webpage.
-
-That is why this README now uses a visual SVG hero at the top. If you want the actual interactive demo to be public from the repo, the next step is to publish `demo/` with GitHub Pages and link to that hosted URL.
+GitHub READMEs cannot embed the interactive HTML page directly, so the full experience stays in `demo/` while the README uses static visuals.
 
 ## Install
 
@@ -285,13 +278,6 @@ This creates a timestamped bundle under `dist/` containing product metadata, pro
 - Claude
 - Cursor
 - ChatGPT
-
-## Status
-
-- install: ready
-- export: ready
-- demo: ready
-- benchmark: exact
 
 ## Repository
 

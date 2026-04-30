@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stenographer Mode Demo Video</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7efe3;
+        --panel: rgba(255, 250, 244, 0.92);
+        --ink: #1f1b16;
+        --muted: #65584c;
+        --line: rgba(74, 57, 40, 0.14);
+        --accent: #d76536;
+        --accent-strong: #ab4321;
+        --shadow: 0 28px 80px rgba(68, 39, 18, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(242, 193, 78, 0.34), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(215, 101, 54, 0.22), transparent 26%),
+          linear-gradient(180deg, #fff8ef 0%, var(--bg) 100%);
+        padding: 32px 18px 48px;
+      }
+
+      .shell {
+        width: min(1080px, 100%);
+        margin: 0 auto;
+        display: grid;
+        gap: 24px;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero {
+        padding: 28px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-strong);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 0.96;
+        max-width: 12ch;
+      }
+
+      .lede {
+        margin: 0;
+        max-width: 70ch;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(171, 67, 33, 0.16);
+        background: #fff8f0;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, #d76536 0%, #f2c14e 100%);
+        border-color: transparent;
+      }
+
+      .player {
+        padding: 16px;
+      }
+
+      video {
+        width: 100%;
+        display: block;
+        border-radius: 22px;
+        background: #120f0b;
+      }
+
+      .caption {
+        margin: 14px 4px 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 18px 12px 28px;
+        }
+
+        .hero,
+        .player {
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel hero">
+        <p class="eyebrow">Hosted Demo Player</p>
+        <h1>Stenographer Mode video walkthrough</h1>
+        <div class="actions">
+          <a class="button primary" href="./index.html">Open full demo site</a>
+          <a class="button" href="../steno-mode-demo1.mp4">Download MP4</a>
+        </div>
+      </section>
+
+      <section class="panel player">
+        <video controls playsinline preload="metadata" poster="./video-thumbnail.png">
+          <source src="../steno-mode-demo1.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video. Use the MP4 download link above.
+        </video>
+        <p class="caption">
+          Video source: <code>steno-mode-demo1.mp4</code>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

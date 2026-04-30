@@ -1,8 +1,12 @@
 # Steno Mode
 
+![Steno Mode infographic](./demo/readme-hero.svg)
+
+## Demo
+
 [![Watch the Steno Mode demo](./demo/video-thumbnail.png)](https://akashai7.github.io/stenographer-mode/demo/video.html)
 
-**Watch the demo:** click the thumbnail above to open the  video .
+**Watch the demo:** click the thumbnail above to open the video.
 
 
 Shorthand-first token compression that stays readable, technical, and structurally precise.

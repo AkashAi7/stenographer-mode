@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steno Mode | Stenographer Mode for VS Code Copilot, ChatGPT, Claude, and Cursor</title>
+    <meta
+      name="description"
+      content="Steno Mode, also called Stenographer Mode, is a shorthand-first prompt pack and custom agent for readable technical token reduction in VS Code Copilot, ChatGPT, Claude, and Cursor."
+    />
+    <meta
+      name="keywords"
+      content="Steno Mode, Stenographer Mode, VS Code Copilot prompt, GitHub Copilot custom agent, ChatGPT custom instructions, Claude system prompt, Cursor rules, token reduction, prompt engineering"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://akashai7.github.io/stenographer-mode/" />
+    <meta property="og:title" content="Steno Mode | Readable Token Reduction for Technical AI Workflows" />
+    <meta
+      property="og:description"
+      content="Prompt pack, custom agent, and benchmarked shorthand mode for compact technical AI responses."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://akashai7.github.io/stenographer-mode/" />
+    <meta property="og:image" content="https://akashai7.github.io/stenographer-mode/demo/video-thumbnail.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Steno Mode | Readable Token Reduction for Technical AI Workflows" />
+    <meta
+      name="twitter:description"
+      content="Use Steno Mode for compact technical answers in VS Code Copilot, ChatGPT, Claude, and Cursor."
+    />
+    <meta name="twitter:image" content="https://akashai7.github.io/stenographer-mode/demo/video-thumbnail.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Steno Mode",
+            "alternateName": "Stenographer Mode",
+            "url": "https://akashai7.github.io/stenographer-mode/"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Steno Mode",
+            "alternateName": "Stenographer Mode",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Windows, macOS, Linux",
+            "description": "Shorthand-first prompt pack and custom agent for readable technical token reduction in VS Code Copilot, ChatGPT, Claude, and Cursor.",
+            "url": "https://akashai7.github.io/stenographer-mode/",
+            "image": "https://akashai7.github.io/stenographer-mode/demo/video-thumbnail.png",
+            "sameAs": [
+              "https://github.com/AkashAi7/stenographer-mode"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Steno Mode?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Steno Mode is a shorthand-first prompt pack and custom agent for compact technical AI responses."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where can I use Steno Mode?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can use Steno Mode with VS Code Copilot, ChatGPT custom instructions, Claude system prompts, and Cursor rules."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What problems does Steno Mode solve?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It reduces filler in technical AI responses while preserving exact literals, commands, paths, and structure."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7efe3;
+        --panel: rgba(255, 250, 244, 0.95);
+        --ink: #1f1b16;
+        --muted: #65584c;
+        --line: rgba(74, 57, 40, 0.14);
+        --accent: #d76536;
+        --accent-strong: #ab4321;
+        --shadow: 0 28px 80px rgba(68, 39, 18, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(242, 193, 78, 0.34), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(215, 101, 54, 0.22), transparent 26%),
+          linear-gradient(180deg, #fff8ef 0%, var(--bg) 100%);
+        padding: 24px;
+      }
+
+      .shell {
+        width: min(1100px, 100%);
+        margin: 0 auto;
+        display: grid;
+        gap: 24px;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        padding: 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-strong);
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 12px;
+        line-height: 1;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 6vw, 4.8rem);
+        max-width: 11ch;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .actions,
+      .stats,
+      .cards,
+      .faq {
+        display: grid;
+        gap: 16px;
+      }
+
+      .actions {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        margin-top: 20px;
+      }
+
+      .stats,
+      .cards,
+      .faq {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .button,
+      .card,
+      .faq-item,
+      .stat {
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        background: rgba(255, 252, 247, 0.9);
+        padding: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 52px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, #d76536 0%, #f2c14e 100%);
+        border-color: transparent;
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+        font-size: 1.4rem;
+      }
+
+      .card h3,
+      .faq-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+
+      code {
+        font-family: Consolas, monospace;
+        background: rgba(31, 27, 22, 0.06);
+        border-radius: 6px;
+        padding: 0.1rem 0.35rem;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 12px;
+        }
+
+        .panel {
+          padding: 18px;
+          border-radius: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <p class="eyebrow">Prompt Pack + Custom Agent</p>
+        <h1>Steno Mode makes technical AI answers shorter without making them worse.</h1>
+        <p>
+          Steno Mode, also called Stenographer Mode, is a prompt pack and custom agent for readable token reduction in
+          technical workflows. It is built for VS Code Copilot, ChatGPT custom instructions, Claude system prompts, and
+          Cursor rules.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="./demo/">Open interactive demo</a>
+          <a class="button" href="./demo/video.html">Watch walkthrough video</a>
+          <a class="button" href="https://github.com/AkashAi7/stenographer-mode">Open GitHub repository</a>
+        </div>
+      </section>
+
+      <section class="stats">
+        <article class="stat">
+          <strong>~40%</strong>
+          <p>Average token reduction from baseline to Steno across the benchmark corpus.</p>
+        </article>
+        <article class="stat">
+          <strong>50+</strong>
+          <p>Benchmark samples spanning code review, debugging, architecture, docs, and failure cases.</p>
+        </article>
+        <article class="stat">
+          <strong>4</strong>
+          <p>Primary target surfaces: VS Code Copilot, ChatGPT, Claude, and Cursor.</p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">Searchable Value</p>
+        <h2>What this project is for</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>VS Code Copilot prompt pack</h3>
+            <p>Install <code>/steno</code> as a prompt and use the Steno custom agent for compact technical replies.</p>
+          </article>
+          <article class="card">
+            <h3>ChatGPT custom instructions</h3>
+            <p>Use the included starter pack to make ChatGPT answer in shorthand-first technical style.</p>
+          </article>
+          <article class="card">
+            <h3>Claude system prompt</h3>
+            <p>Apply the Claude pack when you want preserved literals, arrows, and compact structured output.</p>
+          </article>
+          <article class="card">
+            <h3>Cursor rules</h3>
+            <p>Use the Cursor rules pack to keep engineering answers short, readable, and technically precise.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">Install</p>
+        <h2>How to use Steno Mode</h2>
+        <p>Install directly from GitHub with <code>npx --yes github:AkashAi7/stenographer-mode install --scope user</code>.</p>
+        <p>Use <code>--scope project</code> for repo-local installation into <code>.github/prompts</code> and <code>.github/agents</code>.</p>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions people actually search</h2>
+        <div class="faq">
+          <article class="faq-item">
+            <h3>What is the difference between Caveman and Steno Mode?</h3>
+            <p>Caveman cuts grammar aggressively. Steno Mode compresses structure while preserving more readability and technical precision.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can I use this with GitHub Copilot and ChatGPT?</h3>
+            <p>Yes. The repo ships prompt and pack surfaces for GitHub Copilot, ChatGPT, Claude, and Cursor.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Is this a model or a prompt?</h3>
+            <p>It is a prompt-driven response style, not a separate model. The repo provides prompt packs, agents, and install flows.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

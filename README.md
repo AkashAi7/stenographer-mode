@@ -2,6 +2,10 @@
 
 ![Steno Mode infographic](./demo/readme-hero.svg)
 
+Steno Mode, also shipped as Stenographer Mode, is a VS Code Copilot prompt, custom agent, and starter-pack bundle for ChatGPT custom instructions, Claude system prompts, and Cursor rules.
+
+Search intent this repo targets: token reduction for AI prompts, shorthand mode for technical answers, VS Code Copilot prompt packs, custom agents, ChatGPT custom instructions, Claude system prompts, and Cursor prompt rules.
+
 ## Demo
 
 [![Watch the Steno Mode demo](./demo/video-thumbnail.png)](https://akashai7.github.io/stenographer-mode/demo/video.html)

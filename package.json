@@ -1,7 +1,32 @@
 {
   "name": "stenographer-mode",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "Shorthand-first prompt pack for readable technical token reduction in VS Code Copilot, ChatGPT, Claude, and Cursor.",
+  "author": "Akash Dwivedi",
+  "license": "MIT",
+  "keywords": [
+    "steno",
+    "stenographer",
+    "prompt",
+    "prompt engineering",
+    "token reduction",
+    "token saving",
+    "vscode",
+    "github copilot",
+    "chatgpt",
+    "claude",
+    "cursor",
+    "custom agent"
+  ],
+  "homepage": "https://akashai7.github.io/stenographer-mode/demo/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkashAi7/stenographer-mode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AkashAi7/stenographer-mode/issues"
+  },
   "type": "module",
   "bin": {
     "steno-mode": "./scripts/steno-mode.mjs"

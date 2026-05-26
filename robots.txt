@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://akashai7.github.io/stenographer-mode/sitemap.xml
+Sitemap: https://akashai7.github.io/stenographer-mode/sitemap-index.xml
+Sitemap: https://akashai7.github.io/stenographer-mode/sitemap.txt

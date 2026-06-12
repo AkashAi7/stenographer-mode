@@ -127,7 +127,7 @@ Switch compression levels inline:
 /steno machine — maximum compression
 ```
 
-To keep steno active after the first activation, use `/steno` once or say `steno mode`. The installed skill keeps the style active across Ask, Edit, Agent, and custom agents until you say `normal mode` or `stop steno`.
+To keep Steno Mode active after the first activation, use `/steno` once or say `Steno Mode`. The installed skill keeps the style active across Ask, Edit, Agent, and custom agents until you say `normal mode` or `stop steno`.
 
 ### VS Code Agent Mode
 
@@ -147,7 +147,7 @@ Use court for terse progress updates.
 Practical split:
 
 - Prompt activation: `/steno` for explicit turn-zero activation
-- Skill activation: `steno mode` for persistent compression across Ask, Edit, Agent, and custom agents
+- Skill activation: `Steno Mode` for persistent compression across Ask, Edit, Agent, and custom agents
 - Agent mode: `Steno` custom agent for dedicated shorthand workflows
 
 ### Claude / ChatGPT / Cursor

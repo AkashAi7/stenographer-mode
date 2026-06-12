@@ -158,7 +158,7 @@ async function installTargets(targets) {
     console.log(`Installed ${target.label} skill -> ${skillDestination}`);
   }
 
-  console.log('Use /steno once, say "steno mode", or switch to the Steno agent to keep steno active across modes and agents.');
+  console.log('Use /steno once, say "Steno Mode", or switch to the Steno agent to keep Steno Mode active across modes and agents.');
 }
 
 async function uninstallTargets(targets) {

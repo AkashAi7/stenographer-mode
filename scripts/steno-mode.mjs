@@ -11,8 +11,11 @@ const options = parseArgs(process.argv.slice(3));
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePrompt = path.join(repoRoot, "bundles", "vscode", "steno.prompt.md");
 const sourceAgent = path.join(repoRoot, ".github", "agents", "steno.agent.md");
+const sourceSkill = path.join(repoRoot, ".github", "skills", "stenographer", "SKILL.md");
 const promptFileName = "steno.prompt.md";
 const agentFileName = "steno.agent.md";
+const skillDirectoryName = "stenographer";
+const skillFileName = "SKILL.md";
 const legacyPromptFileNames = ["stenographer.prompt.md", "stenographer-mode.prompt.md"];
 
 const scope = options.scope ?? "user";
@@ -89,6 +92,7 @@ function resolveTargets(scopeValue, projectDirOption) {
       label: "user",
       promptDirectory: resolveUserPromptDirectory(),
       agentDirectory: resolveUserAgentDirectory(),
+      skillDirectory: resolveUserSkillDirectory(),
     });
   }
 
@@ -97,6 +101,7 @@ function resolveTargets(scopeValue, projectDirOption) {
       label: "project",
       promptDirectory: path.join(projectRoot, ".github", "prompts"),
       agentDirectory: path.join(projectRoot, ".github", "agents"),
+      skillDirectory: path.join(projectRoot, ".github", "skills", skillDirectoryName),
     });
   }
 
@@ -127,15 +132,22 @@ function resolveUserAgentDirectory() {
   return path.join(os.homedir(), ".copilot", "agents");
 }
 
+function resolveUserSkillDirectory() {
+  return path.join(os.homedir(), ".copilot", "skills", skillDirectoryName);
+}
+
 async function installTargets(targets) {
   for (const target of targets) {
     await mkdir(target.promptDirectory, { recursive: true });
     await mkdir(target.agentDirectory, { recursive: true });
+    await mkdir(target.skillDirectory, { recursive: true });
 
     const promptDestination = path.join(target.promptDirectory, promptFileName);
     const agentDestination = path.join(target.agentDirectory, agentFileName);
+    const skillDestination = path.join(target.skillDirectory, skillFileName);
     await copyFile(sourcePrompt, promptDestination);
     await copyFile(sourceAgent, agentDestination);
+    await copyFile(sourceSkill, skillDestination);
 
     for (const legacyFileName of legacyPromptFileNames) {
       await rm(path.join(target.promptDirectory, legacyFileName), { force: true });
@@ -143,9 +155,10 @@ async function installTargets(targets) {
 
     console.log(`Installed ${target.label} prompt -> ${promptDestination}`);
     console.log(`Installed ${target.label} agent -> ${agentDestination}`);
+    console.log(`Installed ${target.label} skill -> ${skillDestination}`);
   }
 
-  console.log("Use /steno in Ask mode or switch to the Steno agent in Agent mode.");
+  console.log('Use /steno once, say "Steno Mode", or switch to the Steno agent to keep Steno Mode active across modes and agents.');
 }
 
 async function uninstallTargets(targets) {
@@ -170,6 +183,14 @@ async function uninstallTargets(targets) {
     if (removedAgent) {
       removedCount += 1;
       console.log(`Removed ${agentPath}`);
+    }
+
+    const skillPath = path.join(target.skillDirectory, skillFileName);
+    const removedSkill = await removeIfExists(skillPath);
+
+    if (removedSkill) {
+      removedCount += 1;
+      console.log(`Removed ${skillPath}`);
     }
   }
 
@@ -196,5 +217,6 @@ function printTargets(targets) {
   for (const target of targets) {
     console.log(`${target.label} prompt: ${path.join(target.promptDirectory, promptFileName)}`);
     console.log(`${target.label} agent: ${path.join(target.agentDirectory, agentFileName)}`);
+    console.log(`${target.label} skill: ${path.join(target.skillDirectory, skillFileName)}`);
   }
 }

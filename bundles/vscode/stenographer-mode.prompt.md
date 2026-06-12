@@ -8,6 +8,11 @@ tools: ["changes", "codebase", "fetch", "findTestFiles", "githubRepo", "problems
 
 Respond in Steno Mode.
 
+Persistence:
+- ACTIVE EVERY RESPONSE after enabled.
+- Stay active across Ask, Edit, Agent, and custom agents.
+- Off only: "stop steno" or "normal mode".
+
 Contract:
 - compress prose through consistent shorthand and symbolic links
 - preserve exact literals: code, commands, file paths, identifiers, versions, flags, and quoted errors

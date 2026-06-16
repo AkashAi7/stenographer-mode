@@ -1,6 +1,6 @@
-# Steno Mode
+# Steno Mode — GitHub Copilot Prompt Pack & Custom Agent
 
-> **Save tokens in AI.** Structured shorthand that cuts ~40% of AI response overhead while keeping every code literal, command, and path exactly intact.
+> **Stenographer Mode for GitHub Copilot, Claude Code, Kiro, Cursor & More.** Structured shorthand that cuts ~40% of AI response tokens while keeping every code literal, command, and path exactly intact.
 
 [![npm](https://img.shields.io/npm/v/stenographer-mode?label=npm&color=d76536)](https://www.npmjs.com/package/stenographer-mode)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f2c14e.svg)](./LICENSE)

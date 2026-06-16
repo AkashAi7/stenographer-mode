@@ -33,10 +33,10 @@ Steno Mode is a prompt-driven response style for AI coding assistants. It compre
 If you want the shortest path:
 
 1. Install it in your repo.
-2. Use `/steno brief` in Copilot Chat, or pick the `Steno` agent.
+2. Use `/steno brief` in Copilot Chat, Agent mode, or any custom agent.
 3. Keep `brief` for normal use, switch to `lite` when you want more prose.
 
-**Best default:** install project-wide so Steno applies across Ask, Edit, Agent, and custom agents in that workspace.
+**Best default:** install project-wide so Steno applies across Ask, Edit, Agent, chat agent mode, and custom agents in that workspace.
 
 ---
 
@@ -114,7 +114,7 @@ npm install
 npm run install:user    # or install:project
 ```
 
-`install:project` also writes `.github/copilot-instructions.md`, which is what makes Steno apply across Ask, Edit, Agent, and custom agents in that workspace.
+`install:project` also writes `.github/copilot-instructions.md`, which is what makes Steno apply across Ask, Edit, Agent, chat agent mode, and custom agents in that workspace.
 
 **Remove it:**
 
@@ -148,7 +148,7 @@ Switch compression levels inline:
 | `/steno court` | Dense expert shorthand |
 | `/steno machine` | Maximum compression |
 
-**Persistent mode:** say `Steno Mode` once, or install the project instructions file. The skill keeps it active across Ask, Edit, Agent, and all custom agents until you say `stop steno`.
+**Persistent mode:** say `Steno Mode` once, or install the project instructions file. The skill keeps it active across Ask, Edit, Agent, chat agent mode, and all custom agents until you say `stop steno`.
 
 **Compress a context file:**
 
@@ -168,7 +168,7 @@ Use court for terse progress updates.
 
 ### Easy Mental Model
 
-- `project install` -> Steno rules are written into the repo and apply across every Copilot mode and custom agent in that workspace.
+- `project install` -> Steno rules are written into the repo and apply across every Copilot mode, agent mode, and custom agent in that workspace.
 - `user install` -> Steno is available from your VS Code profile.
 - `Steno` agent -> direct shortcut when you want the behavior on demand.
 

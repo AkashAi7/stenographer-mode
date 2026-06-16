@@ -1,118 +1,110 @@
 # Steno Mode
 
-![Steno Mode infographic](./demo/readme-hero.svg)
+> **Save tokens in AI.** Structured shorthand that cuts ~40% of AI response overhead while keeping every code literal, command, and path exactly intact.
 
-Steno Mode, also shipped as Stenographer Mode, is a VS Code Copilot prompt, custom agent, and starter-pack bundle for ChatGPT custom instructions, Claude system prompts, and Cursor rules.
+[![npm](https://img.shields.io/npm/v/stenographer-mode?label=npm&color=d76536)](https://www.npmjs.com/package/stenographer-mode)
+[![License: MIT](https://img.shields.io/badge/license-MIT-f2c14e.svg)](./LICENSE)
+[![Benchmark](https://img.shields.io/badge/benchmark-50%2B%20samples-65584c.svg)](./benchmarks/latest.json)
+[![Platforms](https://img.shields.io/badge/works%20with-Copilot%20%7C%20Claude%20Code%20%7C%20Kiro%20%7C%20Cursor%20%7C%208%2B%20more-1f1b16.svg)](#platforms)
 
-Search intent this repo targets: token reduction for AI prompts, shorthand mode for technical answers, VS Code Copilot prompt packs, custom agents, ChatGPT custom instructions, Claude system prompts, and Cursor prompt rules.
-
-## Demo
+<br>
 
 [![Watch the Steno Mode demo](./demo/video-thumbnail.png)](https://akashai7.github.io/stenographer-mode/demo/video.html)
 
-**Watch the demo:** click the thumbnail above to open the video.
+**[▶ Watch the demo](https://akashai7.github.io/stenographer-mode/demo/video.html)** · **[Open interactive benchmark](https://akashai7.github.io/stenographer-mode/demo/)** · **[GitHub repo](https://github.com/AkashAi7/stenographer-mode)**
 
+---
 
-Shorthand-first token compression that stays readable, technical, and structurally precise.
+## What It Does
 
-Steno Mode is a prompt product for compact technical responses. It compresses through stable shorthand, preserved literals, and scan-friendly structure so the output stays useful in real engineering workflows.
+Steno Mode is a prompt-driven response style for AI coding assistants. It compresses answers through consistent shorthand rules, not random truncation.
 
-## Why This Exists
+| Technique | Example |
+|---|---|
+| **Stable abbreviations** | `cfg`, `auth`, `deps`, `req`, `resp`, `impl`, `ctx` |
+| **Symbolic chains** | `A -> B -> C` instead of prose transitions |
+| **Filler removal** | Drops pleasantries and repeated framing |
+| **Literal protection** | Code, paths, commands, errors stay **verbatim** |
 
-- Technical answers often waste tokens on filler, framing, and repeated setup.
-- Raw shortening can save tokens but damage scanability and precision.
-- Steno mode is built to keep causality, identifiers, commands, and code-adjacent clarity intact while staying compact.
+---
 
-## Why Steno
+## Benchmark
 
-### The Problem
+Real numbers from 50+ samples across 7 categories (debugging, code-review, architecture, docs, onboarding, ambiguous, stakeholder):
 
-AI responses are expensive. Every token costs money, time, and attention. Most technical answers are 30-50% filler: soft phrasing, redundant transitions, and verbose setup that adds reading time without adding value.
+| | Baseline | Caveman | **Steno** |
+|---|---:|---:|---:|
+| Tokens (retry loop Q) | 52 | 27 | **20** |
+| Avg reduction vs baseline | — | ~48% | **~40%** |
+| Readability win rate | — | — | **86% over caveman** |
+| Literal accuracy | 100% | 100% | **100%** |
 
-### The Solution
+> Failure cases are included in the corpus. Steno is not universal — see [Honest Scope](#honest-scope).
 
-Steno mode applies **structured compression** — not random shortening, but deliberate shorthand with rules that keep technical content intact.
+---
 
-| What steno preserves | Example |
-| --- | --- |
-| **Exact literals** | Commands, paths, error codes stay verbatim |
-| **Causal chains** | `A -> B -> C` notation shows flow at a glance |
-| **Code structure** | Identifiers, function names, config keys unchanged |
-| **Scan-friendly layout** | Bullets, arrows, sections enable fast navigation |
+## Quick Comparison
 
-### The Payoff
+**Prompt:** `Why does this API retry loop never stop?`
 
-| Benefit | Impact |
-| --- | --- |
-| **~40% token reduction** | Lower API costs, faster responses |
-| **Faster reading** | Scan in seconds instead of parsing paragraphs |
-| **Better retention** | Dense info sticks; filler fades |
-| **Technical accuracy** | No lossy compression on what matters |
-| **Consistent style** | Predictable abbreviations across responses |
+```
+Baseline  The retry loop never stops because the retry counter is stored inside
+          the request handler, so it resets to zero on every new attempt.
+          Move the counter to state that survives across attempts.           [52 tok]
 
-### Who Benefits Most
+Caveman   Retry counter inside request handler. Resets each retry. Terminal
+          condition never hit. Move counter outside.                         [27 tok]
 
-- **Senior engineers** who scan faster than they read
-- **Code reviewers** who process many PRs per day
-- **On-call responders** who need answers now, not essays
-- **API-heavy workflows** where token costs add up
-- **Documentation writers** who value density over decoration
+Steno     Retry ctr lives inside req handler -> resets each attempt ->
+          no terminal hit. Persist ctr across attempts.                      [20 tok]
+```
 
-### Real Numbers
+**Prompt:** `Review this caching change.`
 
-From the benchmark corpus (50+ samples, 7 categories):
+```
+Baseline  This change improves cache hit rate, but it also introduces a stale
+          data risk because invalidation only occurs on create and not on
+          update or delete.
 
-- **Baseline → Steno**: ~40% average token reduction
-- **Caveman → Steno**: 86% win rate on readability-adjusted comparisons
-- **Preserved precision**: 100% of code literals, paths, and error messages intact
+Steno     Hit rate up, but cache invalidation only covers create ->
+          stale reads on update/delete paths.
+```
 
-Steno is not about saving tokens at any cost. It is about saving the right tokens while keeping everything that matters.
+---
 
-## Honest Scope
+## Install
 
-Steno mode is a specialized response style, not a universal improvement. It works well in some contexts and poorly in others.
+One command, no clone required:
 
-### When steno helps
+```powershell
+# VS Code user profile (prompt + skill + agent)
+npx --yes github:AkashAi7/stenographer-mode install --scope user
 
-| Use case | Why it works |
-| --- | --- |
-| Code review comments | Concise feedback, technical literals preserved |
-| Bug explanations | Causal chains stay clear with arrow notation |
-| Architecture summaries | Flow descriptions compress well |
-| API and config docs | Structured info maps to shorthand naturally |
-| Debugging Q&A | Fast scan, exact errors and paths preserved |
+# Current repo only (.github/prompts + .github/agents)
+npx --yes github:AkashAi7/stenographer-mode install --scope project
 
-### When steno hurts
+# Global CLI
+npm install -g github:AkashAi7/stenographer-mode
+```
 
-| Use case | Why it fails |
-| --- | --- |
-| Onboarding and tutorials | Beginners need prose, not shorthand |
-| Stakeholder communication | Executives expect full sentences |
-| Ambiguous problem-solving | Nuance gets lost in compression |
-| Empathetic responses | Human warmth requires words |
-| Teaching new concepts | Analogies and explanations need space |
+If you already cloned the repo:
 
-## How It Works
+```powershell
+npm install
+npm run install:user    # or install:project
+```
 
-Steno mode is a **prompt instruction** that tells the AI to compress its responses using consistent rules. No ML models, no preprocessing — just a prompt that enforces formatting discipline.
+Uninstall:
 
-The mode applies four compression tactics:
+```powershell
+npm run uninstall:user
+```
 
-1. **Shorthand vocabulary** — Stable abbreviations like `cfg`, `auth`, `deps`, `req`, `resp`, `impl`, `ctx` that compress common technical words without losing meaning.
-
-2. **Symbolic linking** — Arrow notation (`->`, `=>`) for causal chains, plus symbols (`w/`, `w/o`, `+`, `vs`) that compress connective phrases.
-
-3. **Literal preservation** — Code snippets, file paths, commands, error messages, and identifiers stay **exactly as written**. No lossy compression on what matters.
-
-4. **Structured layout** — Bullets, tables, and section breaks instead of dense paragraphs. Fast scanning over slow reading.
-
-The result is output that looks like shorthand notes from a senior engineer — dense, precise, and scannable.
+---
 
 ## Usage
 
 ### VS Code Copilot Chat
-
-After installation, type `/steno` followed by your prompt:
 
 ```
 /steno Why does this test fail intermittently?
@@ -120,187 +112,112 @@ After installation, type `/steno` followed by your prompt:
 
 Switch compression levels inline:
 
-```
-/steno lite  — tight professional prose
-/steno brief — default shorthand (recommended)
-/steno court — dense expert shorthand
-/steno machine — maximum compression
-```
+| Command | Style |
+|---|---|
+| `/steno lite` | Tight professional prose |
+| `/steno brief` | Default shorthand *(recommended)* |
+| `/steno court` | Dense expert shorthand |
+| `/steno machine` | Maximum compression |
 
-To keep Steno Mode active after the first activation, use `/steno` once or say `Steno Mode`. The installed skill keeps the style active across Ask, Edit, Agent, and custom agents (including agent switches) until you say `normal mode` or `stop steno`.
+**Persistent mode:** say `Steno Mode` once. The skill keeps it active across Ask, Edit, Agent, and all custom agents until you say `stop steno`.
 
-Convert context files to shorthand via slash command:
+**Compress a context file:**
 
 ```
-/steno-compress temporary
-/steno-compress permanent
+/steno-compress temporary   # returns shorthand in chat only
+/steno-compress permanent   # rewrites the target file in-place
 ```
-
-Use `temporary` for session-only conversion in chat output. Use `permanent` to rewrite instructions, skills, agents, prompts, or other context files in-place.
 
 ### VS Code Agent Mode
 
-Switch to the `Steno` custom agent from the agents picker, then ask normally:
+Pick the **Steno** agent from the agent picker, then ask normally:
 
-```text
-Review this diff for regressions.
 ```
-
-Override the default level inline when needed:
-
-```text
-Use lite for this explanation.
+Review this diff for regressions.
 Use court for terse progress updates.
 ```
 
-Practical split:
+---
 
-- Prompt activation: `/steno` for explicit turn-zero activation
-- Skill activation: `Steno Mode` for persistent compression across Ask, Edit, Agent, and custom agents
-- Agent mode: `Steno` custom agent for dedicated shorthand workflows
+## Platforms
 
-### Claude / ChatGPT / Cursor
+| Platform | How to activate |
+|---|---|
+| **VS Code Copilot** | `npx` install → `/steno` |
+| **Claude Code** | Paste `packs/claude/system.txt` into system prompt |
+| **Kiro** | Paste `packs/cursor/rules.txt` into agent instructions |
+| **ChatGPT** | Paste `packs/chatgpt/custom-instructions.txt` |
+| **Cursor** | Paste `packs/cursor/rules.txt` into rules |
+| **Windsurf** | Paste `packs/cursor/rules.txt` into rules |
+| **Aider** | `--system-prompt` flag or `.aider.conf.yml` |
+| **Sourcegraph Cody** | Paste into Cody custom instructions |
 
-Paste the contents of the appropriate pack into your system prompt or custom instructions:
+---
 
-| Platform | File |
-|----------|------|
-| Claude / Claude Code | `packs/claude/system.txt` |
-| ChatGPT | `packs/chatgpt/custom-instructions.txt` |
-| Cursor | `packs/cursor/rules.txt` |
-| Kiro | `packs/cursor/rules.txt` (drop into Kiro agent instructions) |
-| Windsurf | `packs/cursor/rules.txt` (drop into Windsurf rules) |
-| Aider | paste into `--system-prompt` or `.aider.conf.yml` |
-| Sourcegraph Cody | paste into Cody custom instructions |
+## Honest Scope
 
-Then use naturally — the AI will respond in steno style by default.
+Steno works well in some contexts and poorly in others.
 
-## Quick Comparison
+**Works well:**
+- Code review comments
+- Bug explanations and debugging Q&A
+- Architecture summaries
+- API and config documentation
 
-Prompt: `Why does this API retry loop never stop?`
+**Does not work well:**
+- Onboarding and tutorials (beginners need prose)
+- Stakeholder communication (executives expect full sentences)
+- Empathetic responses
+- Teaching new concepts where analogies need space
 
-| Mode | Example | Tokens | Read on it |
-| --- | --- | ---: | --- |
-| Baseline | `The retry loop never stops because the retry counter is stored inside the request handler, so it resets to zero on every new attempt. Move the counter to state that survives across attempts.` | 52 | Clear, but long |
-| Caveman | `Retry counter stored inside request handler. Each retry resets counter to zero. Terminal condition never hit. Move counter to state that survives retries.` | 27 | Fast, but rough |
-| Steno | `Retry ctr lives inside req handler -> resets each attempt -> no terminal hit. Persist ctr across attempts.` | 20 | Compact and still technical |
+---
 
-Prompt: `Review this caching change.`
+## Compression Levels
 
-| Mode | Example |
-| --- | --- |
-| Baseline | `This change improves cache hit rate, but it also introduces a stale data risk because invalidation only occurs on create and not on update or delete.` |
-| Caveman | `Cache hit rate better. Stale data risk. Invalidation only on create, not update/delete.` |
-| Steno | `Hit rate up, but cache invalidation only covers create -> stale reads on update/delete paths.` |
+| Level | Description |
+|---|---|
+| `lite` | Tight professional prose. Full sentences mostly intact. |
+| `brief` | **Default.** Shorthand + symbols + compact phrasing. |
+| `court` | Dense expert shorthand. Fragments allowed. |
+| `machine` | Maximum compression. Expert use only. |
 
-Prompt: `Explain the architecture.`
+---
 
-| Mode | Example |
-| --- | --- |
-| Baseline | `The worker receives jobs from the API, enriches them with configuration from Redis, writes results to PostgreSQL, and emits metrics through OpenTelemetry.` |
-| Caveman | `API sends jobs to worker. Worker reads Redis config, writes Postgres, emits telemetry.` |
-| Steno | `API -> worker -> Redis cfg lookup -> Postgres write -> OpenTelemetry emit.` |
-
-## Install
-
-One command, no clone required. The current one-liners pull straight from GitHub via `npx`.
-
-| Target | Command |
-| --- | --- |
-| VS Code user profile (prompt + skill + agent) | `npx --yes github:AkashAi7/stenographer-mode install --scope user` |
-| Current repo only (`.github/prompts/` + `.github/skills/` + `.github/agents/`) | `npx --yes github:AkashAi7/stenographer-mode install --scope project` |
-| Global CLI install | `npm install -g github:AkashAi7/stenographer-mode` |
-
-If you install the CLI globally, use:
-
-```powershell
-steno-mode install --scope user
-steno-mode install --scope project
-```
-
-If you already cloned or downloaded this repo, use the local scripts instead:
+## Benchmarking
 
 ```powershell
 npm install
-npm run install:user
-npm run install:project
-```
-
-Scopes:
-
-- `user`: copies `bundles/vscode/steno.prompt.md` and `bundles/vscode/steno-compress.prompt.md` into the VS Code roaming prompt profile, installs `.github/agents/steno.agent.md` into `~/.copilot/agents/`, and installs `.github/skills/steno/SKILL.md` into `~/.copilot/skills/steno/`.
-- `project`: copies prompts into `.github/prompts/`, the custom agent into `.github/agents/steno.agent.md`, and the persistent skill into `.github/skills/steno/SKILL.md` in the current working directory.
-
-PowerShell wrappers still work on Windows and now delegate to the same Node installer:
-
-```powershell
-& '.\install\install.ps1'
-```
-
-Remove it:
-
-```powershell
-npm run uninstall:user
-npm run uninstall:project
-& '.\install\uninstall.ps1'
-```
-
-Primary command: `/steno`
-
-Agent name: `Steno`
-
-## Exact Benchmarking
-
-This project uses `gpt-tokenizer` for exact token counts across a corpus of 50+ samples spanning 7 categories: debugging, code-review, architecture, docs, onboarding, ambiguous, and stakeholder.
-
-The corpus intentionally includes failure cases where steno underperforms to provide honest evaluation.
-
-Install dependencies:
-
-```powershell
-npm install
-```
-
-Generate benchmark artifacts:
-
-```powershell
 npm run benchmark
 ```
 
-Outputs:
+Outputs `benchmarks/latest.json` and `demo/benchmark-data.js` using exact token counts via `gpt-tokenizer`.
 
-- `benchmarks/latest.json`
-- `demo/benchmark-data.js`
-
-## Export A Distribution Bundle
-
-```powershell
-& '.\install\export-pack.ps1'
-```
-
-This creates a timestamped bundle under `dist/` containing product metadata, prompt bundles, demo assets, benchmark artifacts, install scripts, and platform packs.
+---
 
 ## Repo Structure
 
-- `.github/skills/steno/SKILL.md`: VS Code Copilot skill
-- `.github/skills/caveman/SKILL.md`: caveman comparison skill
-- `bundles/vscode/steno.prompt.md`: VS Code user prompt bundle
-- `bundles/vscode/steno-compress.prompt.md`: VS Code context compression prompt
-- `demo/`: local landing page and README visual assets
-- `packs/`: cross-platform starter packs
-- `install/`: installer and exporter scripts
-- `scripts/steno-mode.mjs`: cross-platform installer CLI
-- `benchmarks/`: benchmark outputs
-- `scripts/generate-benchmarks.mjs`: exact token generation pipeline
+```
+.github/
+  agents/steno.agent.md          VS Code custom agent
+  skills/steno/SKILL.md          Copilot persistent skill
+  skills/caveman/SKILL.md        Caveman comparison skill
+bundles/vscode/
+  steno.prompt.md                VS Code prompt bundle
+  steno-compress.prompt.md       Context compression command
+packs/
+  claude/system.txt              Claude / Claude Code pack
+  chatgpt/custom-instructions.txt
+  cursor/rules.txt               Cursor / Kiro / Windsurf pack
+benchmarks/latest.json           Benchmark results
+scripts/steno-mode.mjs           Cross-platform installer CLI
+```
 
-## Supported Surfaces
-
-- VS Code Copilot Chat
-- Claude
-- Cursor
-- ChatGPT
+---
 
 ## Repository
 
-- GitHub: `https://github.com/AkashAi7/stenographer-mode`
-- Default branch: `main`
+- **Site:** https://akashai7.github.io/stenographer-mode/
+- **GitHub:** https://github.com/AkashAi7/stenographer-mode
+- **Primary command:** `/steno`
+- **Agent name:** `Steno`
+

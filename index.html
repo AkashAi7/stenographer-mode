@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Steno Mode | Token Optimization for VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor, and Windsurf</title>
+    <title>Steno Mode | Save Tokens in AI — Token Saving for VS Code Copilot, Claude Code, Kiro, Cursor</title>
     <meta
       name="description"
-      content="Steno Mode is a shorthand-first token optimization prompt pack and custom agent for VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor, Windsurf, Aider, and Cody. Reduce AI token usage while preserving technical accuracy."
+      content="Steno Mode is how you save tokens in AI. A shorthand-first prompt pack and custom agent for token saving in VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor, Windsurf, Aider, and Cody. ~40% token reduction with preserved accuracy."
     />
     <meta
       name="keywords"
-      content="Steno Mode, token optimization, AI token optimization, LLM cost optimization, reduce AI token usage, prompt compression, Claude Code, Claude Code prompt, Kiro, Kiro AI assistant, Windsurf AI, Aider, Sourcegraph Cody, VS Code Copilot prompt, GitHub Copilot custom agent, ChatGPT custom instructions, Claude system prompt, Cursor rules, prompt engineering, AI coding assistant, code assistant prompt"
+      content="token saving, save tokens in AI, how to save tokens, where to save tokens, token saving AI, reduce AI tokens, token optimization, AI token optimization, LLM cost optimization, reduce AI token usage, prompt compression, Claude Code, Claude Code prompt, Kiro, Kiro AI assistant, Windsurf AI, Aider, Sourcegraph Cody, VS Code Copilot prompt, GitHub Copilot custom agent, ChatGPT custom instructions, Claude system prompt, Cursor rules, prompt engineering, AI coding assistant, code assistant prompt"
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://akashai7.github.io/stenographer-mode/" />
-    <meta property="og:title" content="Steno Mode | Token Optimization for VS Code Copilot, Claude Code, Kiro &amp; More" />
+    <meta property="og:title" content="Steno Mode | Save Tokens in AI — Token Saving for VS Code Copilot, Claude Code, Kiro" />
     <meta
       property="og:description"
-      content="Prompt pack, custom agent, and benchmarked shorthand mode for token optimization across VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor, and Windsurf."
+      content="How to save tokens in AI: Steno Mode cuts ~40% of AI response tokens through structured shorthand. Works with VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor, and Windsurf."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://akashai7.github.io/stenographer-mode/" />
@@ -57,10 +57,34 @@
             "mainEntity": [
               {
                 "@type": "Question",
+                "name": "How to save tokens in AI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "To save tokens in AI, use a structured shorthand prompt style like Steno Mode. It cuts filler, soft phrasing, and repeated framing from AI responses while preserving exact code, commands, paths, and technical identifiers. Steno Mode achieves ~40% token reduction on average across technical prompts."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where to save tokens?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can save tokens in your system prompt, custom instructions, or agent configuration. In VS Code Copilot install Steno Mode with npx --yes github:AkashAi7/stenographer-mode install --scope user. For Claude Code, ChatGPT, Kiro, Cursor, or Windsurf, paste the appropriate pack from the packs/ directory into your system prompt or instructions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is meant by a token in AI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In AI language models, a token is roughly 3-4 characters or about 0.75 words. Tokens are the billing unit for LLM APIs — more tokens in a response means higher cost and slower output. Reducing tokens in AI responses without losing meaning is the goal of tools like Steno Mode."
+                }
+              },
+              {
+                "@type": "Question",
                 "name": "What is Steno Mode?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Steno Mode is a shorthand-first prompt pack and custom agent for compact technical AI responses."
+                  "text": "Steno Mode is a shorthand-first prompt pack and custom agent for token saving in technical AI workflows. It compresses AI responses ~40% through stable abbreviations, symbolic linking, and filler removal while preserving exact code, commands, paths, and identifiers."
                 }
               },
               {
@@ -258,10 +282,11 @@
     <main class="shell">
       <section class="panel">
         <p class="eyebrow">Prompt Pack + Custom Agent</p>
-        <h1>Steno Mode makes technical AI answers shorter without making them worse.</h1>
+        <h1>Save tokens in AI. Keep everything that matters.</h1>
         <p>
-          Steno Mode is a prompt pack and custom agent for token optimization across VS Code Copilot, Claude Code, Kiro,
-          ChatGPT, Cursor, Windsurf, Aider, and Cody. Compact technical responses with preserved accuracy.
+          Steno Mode is how you save tokens in AI responses. A prompt pack and custom agent that cuts ~40% of response
+          overhead through structured shorthand — works with VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor,
+          Windsurf, Aider, and Cody. Exact code, commands, and paths always preserved.
         </p>
         <div class="actions">
           <a class="button primary" href="./demo/">Open interactive demo</a>
@@ -280,30 +305,30 @@
           <p>Benchmark samples spanning code review, debugging, architecture, docs, and failure cases.</p>
         </article>
         <article class="stat">
-          <strong>4</strong>
-          <p>Primary target surfaces: VS Code Copilot, ChatGPT, Claude, and Cursor.</p>
+          <strong>8+</strong>
+          <p>AI coding assistants supported: VS Code Copilot, Claude Code, Kiro, ChatGPT, Cursor, Windsurf, Aider, Cody.</p>
         </article>
       </section>
 
       <section class="panel">
-        <p class="eyebrow">Searchable Value</p>
-        <h2>What this project is for</h2>
+        <p class="eyebrow">Where to save tokens</p>
+        <h2>Where to save tokens in AI</h2>
         <div class="cards">
           <article class="card">
-            <h3>VS Code Copilot prompt pack</h3>
-            <p>Install <code>/steno</code> as a prompt and use the Steno custom agent for compact technical replies.</p>
+            <h3>VS Code Copilot + Kiro</h3>
+            <p>Install <code>/steno</code> prompt and Steno agent with one command. Works across Ask, Edit, and Agent mode.</p>
+          </article>
+          <article class="card">
+            <h3>Claude Code + Claude</h3>
+            <p>Paste <code>packs/claude/system.txt</code> into your Claude system prompt. Token saving activates immediately.</p>
           </article>
           <article class="card">
             <h3>ChatGPT custom instructions</h3>
-            <p>Use the included starter pack to make ChatGPT answer in shorthand-first technical style.</p>
+            <p>Drop <code>packs/chatgpt/custom-instructions.txt</code> into ChatGPT's custom instructions field.</p>
           </article>
           <article class="card">
-            <h3>Claude system prompt</h3>
-            <p>Apply the Claude pack when you want preserved literals, arrows, and compact structured output.</p>
-          </article>
-          <article class="card">
-            <h3>Cursor rules</h3>
-            <p>Use the Cursor rules pack to keep engineering answers short, readable, and technically precise.</p>
+            <h3>Cursor · Windsurf · Aider · Cody</h3>
+            <p>Paste <code>packs/cursor/rules.txt</code> into rules, system prompt, or agent instructions on any of these surfaces.</p>
           </article>
         </div>
       </section>
@@ -316,20 +341,24 @@
       </section>
 
       <section class="panel">
-        <p class="eyebrow">FAQ</p>
-        <h2>Questions people actually search</h2>
+        <p class="eyebrow">FAQ — Token Saving</p>
+        <h2>How to save tokens in AI</h2>
         <div class="faq">
           <article class="faq-item">
-            <h3>What is the difference between Caveman and Steno Mode?</h3>
-            <p>Caveman cuts grammar aggressively. Steno Mode compresses structure while preserving more readability and technical precision.</p>
+            <h3>How to save tokens in AI?</h3>
+            <p>Use a structured shorthand prompt like Steno Mode. It cuts filler and soft phrasing from AI responses while keeping exact code, commands, and paths. Install once, save ~40% tokens on every technical reply.</p>
           </article>
           <article class="faq-item">
-            <h3>Can I use this with GitHub Copilot and ChatGPT?</h3>
-            <p>Yes. The repo ships prompt and pack surfaces for GitHub Copilot, ChatGPT, Claude, and Cursor.</p>
+            <h3>Where to save tokens?</h3>
+            <p>Save tokens in your system prompt, custom instructions, or agent config. Steno Mode installs into VS Code Copilot with one <code>npx</code> command, or paste a starter pack into Claude Code, Kiro, ChatGPT, Cursor, or Windsurf.</p>
           </article>
           <article class="faq-item">
-            <h3>Is this a model or a prompt?</h3>
-            <p>It is a prompt-driven response style, not a separate model. The repo provides prompt packs, agents, and install flows.</p>
+            <h3>What is meant by a token?</h3>
+            <p>A token is ~3–4 characters or ~0.75 words. It is the billing unit for LLM APIs. Every token in a response costs money and time. Steno Mode reduces tokens by ~40% without losing technical content.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Does Steno Mode work with Claude Code and Kiro?</h3>
+            <p>Yes. Paste <code>packs/claude/system.txt</code> into Claude Code, or <code>packs/cursor/rules.txt</code> into Kiro's agent instructions. Token saving activates immediately.</p>
           </article>
         </div>
       </section>

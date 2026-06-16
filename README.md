@@ -127,7 +127,16 @@ Switch compression levels inline:
 /steno machine — maximum compression
 ```
 
-To keep Steno Mode active after the first activation, use `/steno` once or say `Steno Mode`. The installed skill keeps the style active across Ask, Edit, Agent, and custom agents until you say `normal mode` or `stop steno`.
+To keep Steno Mode active after the first activation, use `/steno` once or say `Steno Mode`. The installed skill keeps the style active across Ask, Edit, Agent, and custom agents (including agent switches) until you say `normal mode` or `stop steno`.
+
+Convert context files to shorthand via slash command:
+
+```
+/steno-compress temporary
+/steno-compress permanent
+```
+
+Use `temporary` for session-only conversion in chat output. Use `permanent` to rewrite instructions, skills, agents, prompts, or other context files in-place.
 
 ### VS Code Agent Mode
 
@@ -156,9 +165,13 @@ Paste the contents of the appropriate pack into your system prompt or custom ins
 
 | Platform | File |
 |----------|------|
-| Claude | `packs/claude/system.txt` |
+| Claude / Claude Code | `packs/claude/system.txt` |
 | ChatGPT | `packs/chatgpt/custom-instructions.txt` |
 | Cursor | `packs/cursor/rules.txt` |
+| Kiro | `packs/cursor/rules.txt` (drop into Kiro agent instructions) |
+| Windsurf | `packs/cursor/rules.txt` (drop into Windsurf rules) |
+| Aider | paste into `--system-prompt` or `.aider.conf.yml` |
+| Sourcegraph Cody | paste into Cody custom instructions |
 
 Then use naturally — the AI will respond in steno style by default.
 
@@ -215,8 +228,8 @@ npm run install:project
 
 Scopes:
 
-- `user`: copies `bundles/vscode/steno.prompt.md` into the VS Code roaming prompt profile, installs `.github/agents/steno.agent.md` into `~/.copilot/agents/`, and installs `.github/skills/stenographer/SKILL.md` into `~/.copilot/skills/stenographer/`.
-- `project`: copies the prompt into `.github/prompts/steno.prompt.md`, the custom agent into `.github/agents/steno.agent.md`, and the persistent skill into `.github/skills/stenographer/SKILL.md` in the current working directory.
+- `user`: copies `bundles/vscode/steno.prompt.md` and `bundles/vscode/steno-compress.prompt.md` into the VS Code roaming prompt profile, installs `.github/agents/steno.agent.md` into `~/.copilot/agents/`, and installs `.github/skills/steno/SKILL.md` into `~/.copilot/skills/steno/`.
+- `project`: copies prompts into `.github/prompts/`, the custom agent into `.github/agents/steno.agent.md`, and the persistent skill into `.github/skills/steno/SKILL.md` in the current working directory.
 
 PowerShell wrappers still work on Windows and now delegate to the same Node installer:
 
@@ -269,9 +282,10 @@ This creates a timestamped bundle under `dist/` containing product metadata, pro
 
 ## Repo Structure
 
-- `.github/skills/stenographer/SKILL.md`: VS Code Copilot skill
+- `.github/skills/steno/SKILL.md`: VS Code Copilot skill
 - `.github/skills/caveman/SKILL.md`: caveman comparison skill
 - `bundles/vscode/steno.prompt.md`: VS Code user prompt bundle
+- `bundles/vscode/steno-compress.prompt.md`: VS Code context compression prompt
 - `demo/`: local landing page and README visual assets
 - `packs/`: cross-platform starter packs
 - `install/`: installer and exporter scripts

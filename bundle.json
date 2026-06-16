@@ -5,9 +5,10 @@
   "userId": "stenographer_mode",
   "entrypoints": {
     "vscodePrompt": "bundles/vscode/steno.prompt.md",
+    "vscodePromptCompress": "bundles/vscode/steno-compress.prompt.md",
     "vscodePromptLegacy": "bundles/vscode/stenographer-mode.prompt.md",
     "vscodeAgent": ".github/agents/steno.agent.md",
-    "copilotSkill": ".github/skills/stenographer/SKILL.md",
+    "copilotSkill": ".github/skills/steno/SKILL.md",
     "cavemanBaseline": ".github/skills/caveman/SKILL.md",
     "demo": "demo/index.html",
     "benchmark": "benchmarks/latest.json"

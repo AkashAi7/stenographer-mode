@@ -9,7 +9,9 @@
     "/steno brief",
     "/steno court",
     "/steno machine",
-    "/stenographer-mode"
+    "/steno-compress",
+    "/steno-compress temporary",
+    "/steno-compress permanent"
   ],
   "tagline": "Shorthand-first token compression with readable technical precision.",
   "positioning": {
@@ -32,7 +34,7 @@
       },
       {
         "name": "VS Code Copilot Chat",
-        "asset": ".github/skills/stenographer/SKILL.md",
+        "asset": ".github/skills/steno/SKILL.md",
         "state": "ready"
       },
       {

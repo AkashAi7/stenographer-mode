@@ -10,13 +10,16 @@ const command = process.argv[2] ?? "install";
 const options = parseArgs(process.argv.slice(3));
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePrompt = path.join(repoRoot, "bundles", "vscode", "steno.prompt.md");
+const sourceCompressPrompt = path.join(repoRoot, "bundles", "vscode", "steno-compress.prompt.md");
 const sourceAgent = path.join(repoRoot, ".github", "agents", "steno.agent.md");
-const sourceSkill = path.join(repoRoot, ".github", "skills", "stenographer", "SKILL.md");
+const sourceSkill = path.join(repoRoot, ".github", "skills", "steno", "SKILL.md");
 const promptFileName = "steno.prompt.md";
+const compressPromptFileName = "steno-compress.prompt.md";
 const agentFileName = "steno.agent.md";
-const skillDirectoryName = "stenographer";
+const skillDirectoryName = "steno";
 const skillFileName = "SKILL.md";
-const legacyPromptFileNames = ["stenographer.prompt.md", "stenographer-mode.prompt.md"];
+const legacyPromptFileNames = ["stenographer.prompt.md", "stenographer-mode.prompt.md", "steno-compressor.prompt.md"];
+const legacySkillDirectoryNames = ["stenographer"];
 
 const scope = options.scope ?? "user";
 
@@ -143,9 +146,11 @@ async function installTargets(targets) {
     await mkdir(target.skillDirectory, { recursive: true });
 
     const promptDestination = path.join(target.promptDirectory, promptFileName);
+    const compressPromptDestination = path.join(target.promptDirectory, compressPromptFileName);
     const agentDestination = path.join(target.agentDirectory, agentFileName);
     const skillDestination = path.join(target.skillDirectory, skillFileName);
     await copyFile(sourcePrompt, promptDestination);
+    await copyFile(sourceCompressPrompt, compressPromptDestination);
     await copyFile(sourceAgent, agentDestination);
     await copyFile(sourceSkill, skillDestination);
 
@@ -154,8 +159,16 @@ async function installTargets(targets) {
     }
 
     console.log(`Installed ${target.label} prompt -> ${promptDestination}`);
+    console.log(`Installed ${target.label} prompt -> ${compressPromptDestination}`);
     console.log(`Installed ${target.label} agent -> ${agentDestination}`);
     console.log(`Installed ${target.label} skill -> ${skillDestination}`);
+
+    for (const legacySkillDirName of legacySkillDirectoryNames) {
+      const legacySkillPath = path.join(path.dirname(target.skillDirectory), legacySkillDirName);
+      if (legacySkillPath !== target.skillDirectory) {
+        await rm(legacySkillPath, { recursive: true, force: true });
+      }
+    }
   }
 
   console.log('Use /steno once, say "Steno Mode", or switch to the Steno agent to keep Steno Mode active across modes and agents.');
@@ -165,7 +178,7 @@ async function uninstallTargets(targets) {
   let removedCount = 0;
 
   for (const target of targets) {
-    const promptFileNames = [promptFileName, ...legacyPromptFileNames];
+    const promptFileNames = [promptFileName, compressPromptFileName, ...legacyPromptFileNames];
 
     for (const fileName of promptFileNames) {
       const targetPath = path.join(target.promptDirectory, fileName);
@@ -192,6 +205,15 @@ async function uninstallTargets(targets) {
       removedCount += 1;
       console.log(`Removed ${skillPath}`);
     }
+
+    for (const legacySkillDirName of legacySkillDirectoryNames) {
+      const legacySkillPath = path.join(path.dirname(target.skillDirectory), legacySkillDirName, skillFileName);
+      const removedLegacySkill = await removeIfExists(legacySkillPath);
+      if (removedLegacySkill) {
+        removedCount += 1;
+        console.log(`Removed ${legacySkillPath}`);
+      }
+    }
   }
 
   if (removedCount === 0) {
@@ -216,6 +238,7 @@ async function removeIfExists(targetPath) {
 function printTargets(targets) {
   for (const target of targets) {
     console.log(`${target.label} prompt: ${path.join(target.promptDirectory, promptFileName)}`);
+    console.log(`${target.label} prompt: ${path.join(target.promptDirectory, compressPromptFileName)}`);
     console.log(`${target.label} agent: ${path.join(target.agentDirectory, agentFileName)}`);
     console.log(`${target.label} skill: ${path.join(target.skillDirectory, skillFileName)}`);
   }

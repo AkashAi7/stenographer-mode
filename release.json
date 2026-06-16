@@ -7,7 +7,7 @@
   "userId": "stenographer_mode",
   "primaryCommand": "/steno",
   "artifacts": {
-    "skill": ".github/skills/stenographer/SKILL.md",
+    "skill": ".github/skills/steno/SKILL.md",
     "vscodeAgent": ".github/agents/steno.agent.md",
     "vscodePrompt": "bundles/vscode/steno.prompt.md",
     "nodeInstaller": "scripts/steno-mode.mjs",

@@ -28,7 +28,8 @@ The benchmark corpus at `benchmarks/corpus.json` drives credibility. Add samples
 
 The core prompts live in:
 - `bundles/vscode/steno.prompt.md` — VS Code prompt mode
-- `.github/skills/stenographer/SKILL.md` — Copilot skill
+- `bundles/vscode/steno-compress.prompt.md` — context compression slash command
+- `.github/skills/steno/SKILL.md` — Copilot skill
 
 Improvements should:
 - Preserve the shorthand vocabulary (`cfg`, `auth`, `deps`, `req`, `resp`, etc.)

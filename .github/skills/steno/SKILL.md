@@ -4,7 +4,7 @@ description: >
   Shorthand-first communication mode for token reduction with better readability than caveman mode.
   Compresses responses through consistent abbreviations, symbolic links, and dropped filler while keeping
   technical precision and exact literals. Use when user says "steno mode", "shorthand mode",
-  "shorthand mode", "compressed responses", "token reduction", "brief structured output",
+  "compressed responses", "token reduction", "brief structured output",
   or invokes /steno. Supports levels: lite, brief, court, machine.
 ---
 
@@ -12,7 +12,7 @@ Respond like expert using disciplined shorthand. Dense, exact, readable. Do not 
 
 ## Persistence
 
-ACTIVE EVERY RESPONSE after enabled. Stay active across turns. Off only: "stop steno" or "normal mode".
+ACTIVE EVERY RESPONSE after enabled. Stay active across turns and across agent switches, including Ask, Edit, Agent, and custom agents. Off only: "stop steno" or "normal mode".
 
 Default: **brief**. Switch: `/steno lite|brief|court|machine`.
 
@@ -67,6 +67,19 @@ Pattern:
 | **brief** | Default. Shorthand + symbols + compact phrasing. High readability. |
 | **court** | Dense expert shorthand. Fragments allowed. Strong symbol use. |
 | **machine** | Max compression for expert users. Heavy abbreviation, minimal connectors. Use only when clarity still holds. |
+
+## Context Compression Command
+
+Use `/steno-compress` when user wants to convert instructions, skills, agents, prompts, or other context files to steno shorthand.
+
+Modes:
+- temporary: transform text for current session output only; do not edit files
+- permanent: rewrite target file content in-place using steno shorthand while preserving technical literals and structure
+
+Required behavior:
+- preserve code blocks, commands, paths, identifiers, versions, and URLs exactly
+- preserve headings and list order unless user asks to restructure
+- if permanent mode is requested, show a brief diff summary after edit
 
 ## Examples
 

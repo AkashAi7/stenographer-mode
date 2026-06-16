@@ -28,6 +28,18 @@ Steno Mode is a prompt-driven response style for AI coding assistants. It compre
 
 ---
 
+## Quick Start
+
+If you want the shortest path:
+
+1. Install it in your repo.
+2. Use `/steno brief` in Copilot Chat, or pick the `Steno` agent.
+3. Keep `brief` for normal use, switch to `lite` when you want more prose.
+
+**Best default:** install project-wide so Steno applies across Ask, Edit, Agent, and custom agents in that workspace.
+
+---
+
 ## Benchmark
 
 Real numbers from 50+ samples across 7 categories (debugging, code-review, architecture, docs, onboarding, ambiguous, stakeholder):
@@ -74,14 +86,22 @@ Steno     Hit rate up, but cache invalidation only covers create ->
 
 ## Install
 
-One command, no clone required:
+### Recommended
+
+Use this if you want Steno available in the current repo:
+
+```powershell
+# Current repo only (.github/prompts + .github/agents + .github/copilot-instructions.md)
+npx --yes github:AkashAi7/stenographer-mode install --scope project
+```
+
+### Optional
+
+Use this if you want the user profile setup instead:
 
 ```powershell
 # VS Code user profile (prompt + skill + agent)
 npx --yes github:AkashAi7/stenographer-mode install --scope user
-
-# Current repo only (.github/prompts + .github/agents)
-npx --yes github:AkashAi7/stenographer-mode install --scope project
 
 # Global CLI
 npm install -g github:AkashAi7/stenographer-mode
@@ -94,7 +114,9 @@ npm install
 npm run install:user    # or install:project
 ```
 
-Uninstall:
+`install:project` also writes `.github/copilot-instructions.md`, which is what makes Steno apply across Ask, Edit, Agent, and custom agents in that workspace.
+
+**Remove it:**
 
 ```powershell
 npm run uninstall:user
@@ -110,6 +132,13 @@ npm run uninstall:user
 /steno Why does this test fail intermittently?
 ```
 
+Common choices:
+
+- `/steno brief` -> default, easiest to read
+- `/steno lite` -> more prose
+- `/steno court` -> denser shorthand
+- `/steno machine` -> maximum compression
+
 Switch compression levels inline:
 
 | Command | Style |
@@ -119,7 +148,7 @@ Switch compression levels inline:
 | `/steno court` | Dense expert shorthand |
 | `/steno machine` | Maximum compression |
 
-**Persistent mode:** say `Steno Mode` once. The skill keeps it active across Ask, Edit, Agent, and all custom agents until you say `stop steno`.
+**Persistent mode:** say `Steno Mode` once, or install the project instructions file. The skill keeps it active across Ask, Edit, Agent, and all custom agents until you say `stop steno`.
 
 **Compress a context file:**
 
@@ -136,6 +165,12 @@ Pick the **Steno** agent from the agent picker, then ask normally:
 Review this diff for regressions.
 Use court for terse progress updates.
 ```
+
+### Easy Mental Model
+
+- `project install` -> Steno rules are written into the repo and apply across every Copilot mode and custom agent in that workspace.
+- `user install` -> Steno is available from your VS Code profile.
+- `Steno` agent -> direct shortcut when you want the behavior on demand.
 
 ---
 
@@ -204,6 +239,7 @@ Outputs `benchmarks/latest.json` and `demo/benchmark-data.js` using exact token 
 bundles/vscode/
   steno.prompt.md                VS Code prompt bundle
   steno-compress.prompt.md       Context compression command
+.github/copilot-instructions.md  Project-wide Steno instructions
 packs/
   claude/system.txt              Claude / Claude Code pack
   chatgpt/custom-instructions.txt

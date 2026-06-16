@@ -11,10 +11,12 @@ const options = parseArgs(process.argv.slice(3));
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePrompt = path.join(repoRoot, "bundles", "vscode", "steno.prompt.md");
 const sourceCompressPrompt = path.join(repoRoot, "bundles", "vscode", "steno-compress.prompt.md");
+const sourceCopilotInstructions = path.join(repoRoot, ".github", "copilot-instructions.md");
 const sourceAgent = path.join(repoRoot, ".github", "agents", "steno.agent.md");
 const sourceSkill = path.join(repoRoot, ".github", "skills", "steno", "SKILL.md");
 const promptFileName = "steno.prompt.md";
 const compressPromptFileName = "steno-compress.prompt.md";
+const copilotInstructionsFileName = "copilot-instructions.md";
 const agentFileName = "steno.agent.md";
 const skillDirectoryName = "steno";
 const skillFileName = "SKILL.md";
@@ -102,6 +104,7 @@ function resolveTargets(scopeValue, projectDirOption) {
   if (normalizedScope === "project" || normalizedScope === "all") {
     targets.push({
       label: "project",
+      projectRoot,
       promptDirectory: path.join(projectRoot, ".github", "prompts"),
       agentDirectory: path.join(projectRoot, ".github", "agents"),
       skillDirectory: path.join(projectRoot, ".github", "skills", skillDirectoryName),
@@ -145,12 +148,22 @@ async function installTargets(targets) {
     await mkdir(target.agentDirectory, { recursive: true });
     await mkdir(target.skillDirectory, { recursive: true });
 
+    if (target.projectRoot) {
+      await mkdir(path.join(target.projectRoot, ".github"), { recursive: true });
+    }
+
     const promptDestination = path.join(target.promptDirectory, promptFileName);
     const compressPromptDestination = path.join(target.promptDirectory, compressPromptFileName);
+    const copilotInstructionsDestination = target.projectRoot
+      ? path.join(target.projectRoot, ".github", copilotInstructionsFileName)
+      : null;
     const agentDestination = path.join(target.agentDirectory, agentFileName);
     const skillDestination = path.join(target.skillDirectory, skillFileName);
     await copyFile(sourcePrompt, promptDestination);
     await copyFile(sourceCompressPrompt, compressPromptDestination);
+    if (copilotInstructionsDestination && path.resolve(copilotInstructionsDestination) !== path.resolve(sourceCopilotInstructions)) {
+      await copyFile(sourceCopilotInstructions, copilotInstructionsDestination);
+    }
     await copyFile(sourceAgent, agentDestination);
     await copyFile(sourceSkill, skillDestination);
 
@@ -160,6 +173,9 @@ async function installTargets(targets) {
 
     console.log(`Installed ${target.label} prompt -> ${promptDestination}`);
     console.log(`Installed ${target.label} prompt -> ${compressPromptDestination}`);
+    if (copilotInstructionsDestination) {
+      console.log(`Installed ${target.label} instructions -> ${copilotInstructionsDestination}`);
+    }
     console.log(`Installed ${target.label} agent -> ${agentDestination}`);
     console.log(`Installed ${target.label} skill -> ${skillDestination}`);
 
@@ -214,6 +230,18 @@ async function uninstallTargets(targets) {
         console.log(`Removed ${legacySkillPath}`);
       }
     }
+
+    if (target.projectRoot) {
+      const copilotInstructionsPath = path.join(target.projectRoot, ".github", copilotInstructionsFileName);
+      const removedInstructions = path.resolve(copilotInstructionsPath) !== path.resolve(sourceCopilotInstructions)
+        ? await removeIfExists(copilotInstructionsPath)
+        : false;
+
+      if (removedInstructions) {
+        removedCount += 1;
+        console.log(`Removed ${copilotInstructionsPath}`);
+      }
+    }
   }
 
   if (removedCount === 0) {
@@ -239,6 +267,9 @@ function printTargets(targets) {
   for (const target of targets) {
     console.log(`${target.label} prompt: ${path.join(target.promptDirectory, promptFileName)}`);
     console.log(`${target.label} prompt: ${path.join(target.promptDirectory, compressPromptFileName)}`);
+    if (target.projectRoot) {
+      console.log(`${target.label} instructions: ${path.join(target.projectRoot, ".github", copilotInstructionsFileName)}`);
+    }
     console.log(`${target.label} agent: ${path.join(target.agentDirectory, agentFileName)}`);
     console.log(`${target.label} skill: ${path.join(target.skillDirectory, skillFileName)}`);
   }

@@ -48,6 +48,7 @@
   },
   "files": [
     ".github/agents/",
+    ".github/copilot-instructions.md",
     ".github/skills/",
     "benchmarks/",
     "bundles/",

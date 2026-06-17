@@ -197,11 +197,36 @@ Review this diff for regressions.
 Use court for terse progress updates.
 ```
 
+You can also use Steno as a **mode on top of any other agent**.
+
+How to use it with any agent:
+
+- Install the project scope so `.github/copilot-instructions.md` is present.
+- Switch to any agent you want to use.
+- Say `Steno Mode` once, then continue with your normal task.
+- To stop, say `stop steno` or `normal mode`.
+
+Example flow with another agent:
+
+```text
+Switch to your preferred agent.
+Steno Mode
+Review this diff for regressions.
+Keep updates brief.
+```
+
+What this does:
+
+- the selected agent keeps its own expertise and tools
+- Steno changes the response style to shorthand-first compression
+- this works across Ask, Edit, Agent mode, and custom agents in the workspace when project instructions are installed
+
 ### Easy Mental Model
 
 - `project install` -> Steno rules are written into the repo and apply across every Copilot mode, agent mode, and custom agent in that workspace.
 - `user install` -> Steno is available from your VS Code profile.
 - `Steno` agent -> direct shortcut when you want the behavior on demand.
+- `Steno Mode` + any other agent -> keep that agent's specialization, but make its visible responses follow Steno style.
 
 ---
 

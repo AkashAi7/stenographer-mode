@@ -91,7 +91,7 @@ Steno     Hit rate up, but cache invalidation only covers create ->
 Use this if you want Steno available in the current repo:
 
 ```powershell
-# Current repo only (.github/prompts + .github/agents + .github/copilot-instructions.md)
+# Current repo only (.github/prompts command set + .github/agents + .github/copilot-instructions.md)
 npx --yes github:AkashAi7/stenographer-mode install --scope project
 ```
 
@@ -100,7 +100,7 @@ npx --yes github:AkashAi7/stenographer-mode install --scope project
 Use this if you want the user profile setup instead:
 
 ```powershell
-# VS Code user profile (prompt + skill + agent)
+# VS Code user profile (prompt command set + skill + agent)
 npx --yes github:AkashAi7/stenographer-mode install --scope user
 
 # Global CLI
@@ -156,6 +156,37 @@ Switch compression levels inline:
 /steno-compress temporary   # returns shorthand in chat only
 /steno-compress permanent   # rewrites the target file in-place
 ```
+
+**Bulk convert existing `.github` files:**
+
+```text
+/steno-convert-github preview
+/steno-convert-github apply
+```
+
+Deterministic CLI backend used by this command:
+
+```powershell
+node ./scripts/steno-mode.mjs convert-github --mode preview --project-dir .
+node ./scripts/steno-mode.mjs convert-github --mode apply --project-dir .
+```
+
+NPM shortcuts:
+
+```powershell
+npm run convert:github:preview
+npm run convert:github:apply
+```
+
+**Examples for `.github` files:**
+
+```
+/steno-compress temporary .github/copilot-instructions.md
+/steno-compress temporary .github/skills/steno/SKILL.md
+/steno-compress permanent .github/agents/steno.agent.md
+```
+
+Use `temporary` to preview compression first, then run `permanent` on the same file when the output looks good.
 
 ### VS Code Agent Mode
 
@@ -239,6 +270,7 @@ Outputs `benchmarks/latest.json` and `demo/benchmark-data.js` using exact token 
 bundles/vscode/
   steno.prompt.md                VS Code prompt bundle
   steno-compress.prompt.md       Context compression command
+  steno-convert-github.prompt.md Bulk .github conversion command
 .github/copilot-instructions.md  Project-wide Steno instructions
 packs/
   claude/system.txt              Claude / Claude Code pack

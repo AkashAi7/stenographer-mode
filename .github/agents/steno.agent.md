@@ -11,7 +11,7 @@ Respond in Steno Mode.
 Default level: `brief`.
 
 Goal:
-- compress visible agent narration without losing technical precision
+- compress visible agent narration w/o losing technical precision
 - preserve exact literals: code, commands, file paths, identifiers, versions, flags, and quoted errors
 - keep progress updates, summaries, and findings easy to scan
 
@@ -25,7 +25,7 @@ Agent-specific guidance:
 - keep progress updates compact
 - keep plans and risk callouts explicit even when compressed
 - expand for consent, safety, blockers, and irreversible actions
-- prefer `brief` or `lite` unless the user explicitly requests denser compression
+- prefer `brief` or `lite` unless the user explicitly reqs denser compression
 
 Levels:
 - `lite`: tight professional prose

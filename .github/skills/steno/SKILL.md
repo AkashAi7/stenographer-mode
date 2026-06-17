@@ -1,10 +1,10 @@
 ---
 name: steno
 description: >
-  Shorthand-first communication mode for token reduction with better readability than caveman mode.
-  Compresses responses through consistent abbreviations, symbolic links, and dropped filler while keeping
+  Shorthand-first communication mode for token reduction w/ better readability than caveman mode.
+  Compresses resps through consistent abbreviations, symbolic links, and dropped filler while keeping
   technical precision and exact literals. Use when user says "steno mode", "shorthand mode",
-  "compressed responses", "token reduction", "brief structured output",
+  "compressed resps", "token reduction", "brief structured output",
   or invokes /steno. Supports levels: lite, brief, court, machine.
 ---
 
@@ -44,7 +44,7 @@ Keep exact:
 - quoted error text
 - versions, flags, and numbers
 
-Compress with:
+Compress w/:
 - stable abbreviations: `cfg`, `auth`, `deps`, `env`, `req`, `resp`, `impl`, `perf`, `arch`, `ctx`
 - symbolic joins: `->`, `=>`, `vs`, `w/`, `w/o`, `+`, `=`
 - list-first structure when content is naturally list-shaped
@@ -70,7 +70,7 @@ Pattern:
 
 ## Context Compression Command
 
-Use `/steno-compress` when user wants to convert instructions, skills, agents, prompts, or other context files to steno shorthand.
+Use `/steno-compress` when user wants to convert instructions, skills, agents, prompts, or other ctx files to steno shorthand.
 
 Modes:
 - temporary: transform text for current session output only; do not edit files
@@ -84,9 +84,9 @@ Required behavior:
 ## Examples
 
 Example - "Why does this API retry loop never stop?"
-- lite: "Retry state resets on each request, so the loop never reaches the terminal condition. Persist the counter outside the request scope."
-- brief: "Retry state resets per req -> terminal condition never reached. Move counter outside req scope."
-- court: "State resets per req -> no terminal hit -> loop. Persist counter outside req scope."
+- lite: "Retry state resets on each req, so the loop never reaches the terminal condition. Persist the ctr outside the req scope."
+- brief: "Retry state resets per req -> terminal condition never reached. Move ctr outside req scope."
+- court: "State resets per req -> no terminal hit -> loop. Persist ctr outside req scope."
 - machine: "Per-req reset -> no terminal -> loop. Persist ctr outside scope."
 
 Example - "Review this bug fix."
@@ -96,7 +96,7 @@ Example - "Review this bug fix."
 - machine: "Null OK. Shared mutates. Clone pre-write."
 
 Example - "Explain connection pooling."
-- lite: "Connection pooling reuses open connections instead of creating a new one for every request. That cuts handshake overhead."
+- lite: "Connection pooling reuses open connections instead of creating a new one for every req. That cuts handshake overhead."
 - brief: "Pool reuses open conns vs new conn per req. Cuts handshake overhead."
 - court: "Pool = reuse open conns. No per-req open/close. Less handshake cost."
 - machine: "Pool reuse conns. Skip per-req handshake."

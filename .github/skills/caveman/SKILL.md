@@ -49,8 +49,8 @@ Example - "Why React component re-render?"
 - ultra: "Inline obj prop -> new ref -> re-render. `useMemo`."
 
 Example - "Explain database connection pooling."
-- lite: "Connection pooling reuses open connections instead of creating new ones per request. That avoids repeated handshake overhead."
-- full: "Pool reuse open DB connections. No new connection per request. Skip handshake overhead."
+- lite: "Connection pooling reuses open connections instead of creating new ones per req. That avoids repeated handshake overhead."
+- full: "Pool reuse open DB connections. No new connection per req. Skip handshake overhead."
 - ultra: "Pool = reuse DB conn. Skip handshake -> fast under load."
 
 ## Safety

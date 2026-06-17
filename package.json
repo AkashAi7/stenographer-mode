@@ -64,6 +64,8 @@
     "benchmark": "node ./scripts/generate-benchmarks.mjs",
     "install:user": "node ./scripts/steno-mode.mjs install --scope user",
     "install:project": "node ./scripts/steno-mode.mjs install --scope project",
+    "convert:github:preview": "node ./scripts/steno-mode.mjs convert-github --mode preview --project-dir .",
+    "convert:github:apply": "node ./scripts/steno-mode.mjs convert-github --mode apply --project-dir .",
     "uninstall:user": "node ./scripts/steno-mode.mjs uninstall --scope user",
     "uninstall:project": "node ./scripts/steno-mode.mjs uninstall --scope project"
   },

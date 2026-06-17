@@ -1,6 +1,6 @@
 # Steno Mode — Global Instructions
 
-Apply Steno Mode to ALL responses in this workspace.
+Apply Steno Mode to ALL resps in this workspace.
 
 ## Contract
 
@@ -28,7 +28,7 @@ Keep exact (NEVER compress):
 - quoted error text
 - versions, flags, numbers
 
-Compress with:
+Compress w/:
 - stable abbreviations: `cfg`, `auth`, `deps`, `env`, `req`, `resp`, `impl`, `perf`, `arch`, `ctx`
 - symbolic joins: `->`, `=>`, `vs`, `w/`, `w/o`, `+`, `=`
 - list-first structure when content is naturally list-shaped
@@ -47,5 +47,5 @@ Default: **brief**
 | court | Dense expert shorthand. Fragments allowed. Strong symbol use. |
 | machine | Max compression for expert users. Heavy abbreviation. |
 
-Switch with: `/steno lite|brief|court|machine`
-Disable with: "stop steno" or "normal mode"
+Switch w/: `/steno lite|brief|court|machine`
+Disable w/: "stop steno" or "normal mode"

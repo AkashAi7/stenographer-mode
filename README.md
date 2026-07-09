@@ -2,7 +2,8 @@
 
 > **Stenographer Mode for GitHub Copilot, Claude Code, Kiro, Cursor & More.** Structured shorthand that cuts ~40% of AI response tokens while keeping every code literal, command, and path exactly intact.
 
-[![npm](https://img.shields.io/npm/v/stenographer-mode?label=npm&color=d76536)](https://www.npmjs.com/package/stenographer-mode)
+[![Release](https://img.shields.io/github/v/release/AkashAi7/stenographer-mode?label=release&color=d76536)](https://github.com/AkashAi7/stenographer-mode/releases)
+[![Stars](https://img.shields.io/github/stars/AkashAi7/stenographer-mode?style=flat&color=f2c14e)](https://github.com/AkashAi7/stenographer-mode/stargazers)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f2c14e.svg)](./LICENSE)
 [![Benchmark](https://img.shields.io/badge/benchmark-50%2B%20samples-65584c.svg)](./benchmarks/latest.json)
 [![Platforms](https://img.shields.io/badge/works%20with-Copilot%20%7C%20Claude%20Code%20%7C%20Kiro%20%7C%20Cursor%20%7C%208%2B%20more-1f1b16.svg)](#platforms)
@@ -311,6 +312,9 @@ scripts/steno-mode.mjs           Cross-platform installer CLI
 
 - **Site:** https://akashai7.github.io/stenographer-mode/
 - **GitHub:** https://github.com/AkashAi7/stenographer-mode
+- **Discussions:** https://github.com/AkashAi7/stenographer-mode/discussions
 - **Primary command:** `/steno`
 - **Agent name:** `Steno`
+
+If Steno saves you tokens, a ⭐ on the repo helps others find it.
 

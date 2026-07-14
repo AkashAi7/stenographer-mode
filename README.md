@@ -4,6 +4,7 @@
 
 [![Release](https://img.shields.io/github/v/release/AkashAi7/stenographer-mode?label=release&color=d76536)](https://github.com/AkashAi7/stenographer-mode/releases)
 [![Stars](https://img.shields.io/github/stars/AkashAi7/stenographer-mode?style=flat&color=f2c14e)](https://github.com/AkashAi7/stenographer-mode/stargazers)
+[![Also available in Awesome Copilot](https://img.shields.io/badge/Also%20available%20in-Awesome%20Copilot-2088ff.svg)](https://github.com/github/awesome-copilot/tree/main/skills/steno-mode)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f2c14e.svg)](./LICENSE)
 [![Benchmark](https://img.shields.io/badge/benchmark-50%2B%20samples-65584c.svg)](./benchmarks/latest.json)
 [![Platforms](https://img.shields.io/badge/works%20with-Copilot%20%7C%20Claude%20Code%20%7C%20Kiro%20%7C%20Cursor%20%7C%208%2B%20more-1f1b16.svg)](#platforms)
@@ -94,6 +95,14 @@ Use this if you want Steno available in the current repo:
 ```powershell
 # Current repo only (.github/prompts command set + .github/agents + .github/copilot-instructions.md)
 npx --yes github:AkashAi7/stenographer-mode install --scope project
+```
+
+### Awesome Copilot
+
+Steno Mode is also available as an official [Awesome Copilot skill](https://github.com/github/awesome-copilot/tree/main/skills/steno-mode):
+
+```powershell
+gh skill install github/awesome-copilot steno-mode
 ```
 
 ### Optional
